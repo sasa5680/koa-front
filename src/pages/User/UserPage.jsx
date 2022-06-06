@@ -74,7 +74,7 @@ export default function UserPage({ match }) {
               <div class="AvatarSection">
                 <Avatar
                   size={140}
-                  src="https://joeschmoe.io/api/v1/random"
+                  src= {userDataState.profile.thumbnail}
                 ></Avatar>
               </div>
               <div class="nickname">{userDataState.profile.username}</div>
@@ -136,6 +136,8 @@ const UserSection = styled.div`
   align-items: center;
   justify-content: center;
 
+  background-color: #fefec3;
+
   .AvatarSection {
     display: flex;
     align-items: center;
@@ -165,6 +167,7 @@ const SocialSection = styled.div`
   width: 100%;
   border: 1px navy solid;
   border-radius: 10px;
+  background-color: #fefec3;
 
   .icon {
     font-size: 150%;

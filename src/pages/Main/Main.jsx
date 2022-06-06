@@ -111,6 +111,6 @@ const NavSection = styled.div`
 const InterSection = styled.div`
   width: 100%;
   height: 50px;
-  background-color: red;
+  //background-color: red;
 `;
 

@@ -1,5 +1,17 @@
 import { css } from "styled-components";
 
+const theme = {
+  color: {
+    white: "#ffffff",
+    primary: "#fefec3",
+  },
+};
+
+
+export const ThemaLight = css`
+  background-color: #fefec3;
+`;
+
 //공통 스타일 이곳에서 관리
 export const MainBody = css`
 

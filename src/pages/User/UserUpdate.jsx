@@ -1,10 +1,14 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import {
+  TwitterOutlined,
+  FacebookOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
 import { Modal, Button } from "antd";
-import { Form, Input, Checkbox } from "antd";
+import { Form, Input } from "antd";
 import { Upload, message, Textarea } from "antd";
+import { updateUser }  from "../../service/ServiceUser"
 
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 import styled from "styled-components";
 
@@ -15,47 +19,66 @@ export default function UserUpdate({
   afterOpenModal,
   user
 }) {
-  function resultModal(res, result) {
-    //로그인 성공하면
-    if (result) {
+
+  //const [form] = Form.useForm();
+
+  /* 전송 누르고, 성공 시 call 되는 함수 */
+  const onFinish = async (values) => {
+    //if (!isLogin) return;
+
+    console.log(values);
+    const formData = new FormData();
+
+    Object.keys(values).forEach((key) => formData.append(key, values[key]));
+
+    if (fileList.length > 0) {
+      formData.append("thumbnail", fileList[0].originFileObj);
+    } else {
+      //formData.append("profile", null);
+    }
+    
+    console.log(formData.get("thumbnail"));
+
+    try {
+      const response = await updateUser(user.profile.username, formData);
+
       const modal = Modal.success({
-        title: "Welcome!",
-        content: `환영합니다 ${res.data.username} !`,
+        title: "Result",
+        content: `등록이 완료되었습니다!`,
+        onOk() {
+          //window.location.href = "/";
+        },
       });
 
-      //5초 후에 성공 모달과 로그인 모달 모두 닫는다.
       setTimeout(() => {
         modal.destroy();
-        closeModal();
+        //window.location.href = "/";
       }, 5 * 1000);
-
-      //실패하면 경고 메세지 띄운다.
-    } else {
+    } catch (error) {
+      
       const modal = Modal.warning({
-        title: "로그인 실패",
-        content: "유저정보를 다시 확인하세요!",
+        title: "Result",
+        content: `오류가 발생했습니다!`,
       });
     }
-  }
-
-  const handleSubmit = async (value) => {
-    console.log(value);
   };
 
-  //파일 업로드 이전에 call 되는 함수, 이미지 파일만 받는다.
+  /* 전송 누르고, 실패 시 call 되는 함수(에러처리용) */
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  //파일 업로드 전에 call, false를 리턴하면 자동 업로드를 막는다.
   function beforeUpload(file) {
-    //이미지 파일만 받는다.
+    console.log(file.type);
     const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
     if (!isJpgOrPng) {
       message.error("You can only upload JPG/PNG file!");
     }
-
-    //2MB 넘기면 안된다
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
       message.error("Image must smaller than 2MB!");
     }
-    //return isJpgOrPng && isLt2M;
     return false;
   }
   //파일 담고있는 state
@@ -108,46 +131,35 @@ export default function UserUpdate({
       <Form
         name="user-update"
         initialValues={{
-          remember: true,
+          email: user.contact.email,
+          facebook: user.contact.facebook,
+          twitter: user.contact.twitter,
         }}
-        onFinish={handleSubmit}
+        onFinish={onFinish}
       >
-        <Form.Item
-          name="email"
-          rules={[
-            {
-              message: "Please input your Username!",
-            },
-          ]}
-        >
+        <Form.Item name="email">
           <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
+            size="large"
+            prefix={<MailOutlined className="site-form-item-icon" />}
             defaultValue={user.contact.email}
           />
         </Form.Item>
         <Form.Item name="facebook">
           <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
+            size="large"
+            prefix={<FacebookOutlined className="site-form-item-icon" />}
             defaultValue={user.contact.facebook}
           />
         </Form.Item>
-        <Form.Item
-          name="twitter"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Password!",
-            },
-          ]}
-        >
+        <Form.Item name="twitter">
           <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            placeholder="Password"
+            size="large"
+            prefix={<TwitterOutlined className="site-form-item-icon" />}
             defaultValue={user.contact.twitter}
           />
         </Form.Item>
 
-        <Form.Item name="file" getValueFromEvent={getFile}>
+        <Form.Item name="thumbnail" getValueFromEvent={getFile}>
           <Upload
             name="avatar"
             listType="picture-card"
@@ -181,10 +193,6 @@ const StyledModel = styled(Modal)`
   //border: 5px gold solid;
 `;
 
-const StyledInput = styled(Input)`
-  border-radius: 20px;
-  border: 1px gold solid;
-`;
 
 const SubmitButton = styled(Button)`
   width: 100%;

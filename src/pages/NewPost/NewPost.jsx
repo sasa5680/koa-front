@@ -61,9 +61,6 @@ export default function CreateForm() {
       });      
       
     }
-
-
-    
   };
 
   /* 전송 누르고, 실패 시 call 되는 함수(에러처리용) */

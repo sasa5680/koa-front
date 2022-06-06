@@ -30,7 +30,7 @@ export default function List({post}) {
         </StyledContent>
         <StyledFooter>
           <UserProfile>
-            <Avatar size={40} icon={<UserOutlined />} />
+            <Avatar size={40} src={data.profile.thumbnail}/>
             <div>{data.profile.username}</div>
           </UserProfile>
           <PostProfile>
@@ -67,17 +67,20 @@ const maginLeft = "20px";
 const StyledLayout = styled(Layout)`
   cursor: pointer;
   margin-top: 20px;
-  border: 1px red solid;
   :hover {
     opacity: 0.5;
   }
+
+  border: 2px black solid;
+  border-radius: 5px;
+  background-color: #fefec3;
 `;
 
 const StyledHeader = styled(Header)`
   width: 100%;
 
-  border-top-left-radius: ${border_radious};
-  border-top-right-radius: ${border_radious};
+  /* border-top-left-radius: ${border_radious};
+  border-top-right-radius: ${border_radious}; */
 
   font-size: 30px;
   font-weight: 700;
@@ -85,11 +88,17 @@ const StyledHeader = styled(Header)`
   overflow: hidden;
   padding: 0;
 
+  height: 55px;
+  background-color: #ffd228;
+
   .inner {
     width: 90%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     word-break: break-all;
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -101,8 +110,8 @@ const StyledContent = styled(Content)`
   width: 100%;
   overflow: hidden;
 
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
   .inner {
     word-break: break-all;
@@ -120,6 +129,8 @@ const StyledContent = styled(Content)`
 const StyledFooter = styled(Footer)`
   
   width: 100%;
+
+  background-color: #fff584;
 
   border-bottom-left-radius: ${border_radious};
   border-bottom-right-radius: ${border_radious};

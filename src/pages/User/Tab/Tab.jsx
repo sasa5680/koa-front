@@ -84,7 +84,8 @@ const Header = styled.div`
 const Body = styled.div`
   width: 100%;
   height: calc(100% - 50px);
-`
+  background-color: #fefec3;
+`;
 
 const TabPaneItem = styled.div`
   height: 50px;

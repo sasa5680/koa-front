@@ -18,7 +18,13 @@ export async function getUser(username) {
 //유저 수정
 export async function updateUser(username, form) {
   const url = USER_API_URL + `/${username}`;
-  const response = await axios.post(url, form);
+
+  const response = await axiosWithToken.patch(url, form, {
+    headers: {
+      "Context-Type": "multipart/form-data",
+    },
+  });
+
   return response;
 }
 

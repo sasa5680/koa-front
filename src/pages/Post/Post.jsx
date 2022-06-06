@@ -16,6 +16,8 @@ export default function Promotion({ match }) {
 
   const { id } = match.params;
 
+  
+
   const [post, setposts] = useState({
     profile: { username: "", thumbnail: "" },
     //Posts: [], //홍보글 목록
@@ -72,6 +74,9 @@ export default function Promotion({ match }) {
   } else {
     udButton = <></>;
   }
+
+  let profile = <img src={post.profile.thumbnail} width="50" alt="사과" />
+
   return (
     <Loading fetch={fetchItems}>
       <Row>
@@ -83,14 +88,14 @@ export default function Promotion({ match }) {
                 <Title>{post.title}</Title>
               </Col>
             </Row>
-
+            {profile}
             {/* 유저 프로필, 작성시간 Row */}
             <Row style={{ marginTop: "30px", alignItems: "center" }}>
               <Col span={2}>
                 <Avatar
-                  src={post.profile.thumbnail}
                   size={50}
-                  icon={<UserOutlined />}
+                  src={profile}
+                  //icon={<UserOutlined />}
                 />
               </Col>
               <Col span={3}>
@@ -121,8 +126,12 @@ export default function Promotion({ match }) {
 
             <Row>
               <Col span={24}>
-                <LikeSection onClick={()=>{like(id);}}>
-                  <HeartFilled/>
+                <LikeSection
+                  onClick={() => {
+                    like(id);
+                  }}
+                >
+                  <HeartFilled />
                 </LikeSection>
               </Col>
             </Row>

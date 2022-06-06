@@ -35,8 +35,6 @@ const Intro = styled.div`
     height: 90%;
     width: 90%;
 
-    background-color: aliceblue;
-
     font-size: 25px;
   }
 `;

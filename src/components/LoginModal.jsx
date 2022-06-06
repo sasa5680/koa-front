@@ -139,8 +139,8 @@ const StyledModel = styled(Modal)`
 `;
 
 const StyledInput = styled(Input)`
-  border-radius: 20px;
-  border: 1px gold solid;
+  //border-radius: 20px;
+  //border: 1px gold solid;
 `;
 
 const SubmitButton = styled(Button)`

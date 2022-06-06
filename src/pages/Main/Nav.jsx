@@ -12,10 +12,6 @@ export default function Nav() {
     return (
       <Body>
         <SearchSection>
-          <Select defaultValue="Zhejiang">
-            <Option value="Zhejiang">Zhejiang</Option>
-            <Option value="Jiangsu">Jiangsu</Option>
-          </Select>
           <Search
             placeholder="input search text"
             allowClear
@@ -30,9 +26,9 @@ export default function Nav() {
 
 const Body = styled.div`
     
-    height: 60px;
+    height: 65px;
     width: 100%;
-    background-color: azure;
+    background-color: #161671;
 
     display: flex;
     align-items: center;
@@ -40,7 +36,9 @@ const Body = styled.div`
 
 const SearchSection = styled.div`
     
-    width: 80%;
+    margin-left: auto;
+    margin-right: 30px;
+    width: 50%;
     display: flex;
 `
 

@@ -25,5 +25,5 @@ export default function MainView(){
         <Route exact path="/signup" component={SignUp}></Route> */}
       </Switch>
     );
-
 }
+ 
