@@ -71,7 +71,6 @@ export default function Tabs({ children }) {
 
 const Main = styled.div`
     
-    border: 1px solid navy;
     width: 100%;
     height: 100%;
 `
@@ -84,7 +83,8 @@ const Header = styled.div`
 const Body = styled.div`
   width: 100%;
   height: calc(100% - 50px);
-  background-color: #fefec3;
+  background-color: white;
+  box-shadow: 2px 10px 15px #e1e1e1;
 `;
 
 const TabPaneItem = styled.div`
@@ -94,18 +94,19 @@ const TabPaneItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #a6e1ff;
   cursor: pointer;
-  border: 1px solid navy;
 
   :hover {
-    background-color: green;
+    background-color: #287094;
+    transition: 0.3s;
   }
 
   //선택되었을 경우 적용되는 CSS
   ${(props) =>
     props.selected &&
     css`
-      background-color: yellow;
+      background-color: #287094;
       transition: 0.2s;
     `}
 `;

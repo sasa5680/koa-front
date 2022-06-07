@@ -81,7 +81,7 @@ const Prev = styled.div`
 `
 
 const Page = styled.div`
-  color: gray;
+  color: #b1b1b1;
   margin: 5px;
   font-size: 20px;
   cursor: pointer;
@@ -94,14 +94,14 @@ const Page = styled.div`
   justify-content: center;
 
   &:hover {
-    color: white;
+    color: #525252;
     transition: 0.2s;
   }
 
   ${(props) =>
     props.selected &&
     css`
-      color: white;
+      color: black;
       transition: 0.2s;
     `}
 `;

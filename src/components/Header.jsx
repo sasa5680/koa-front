@@ -5,25 +5,29 @@ import LoginModal from "./LoginModal";
 import { useAccountState } from "../context/AccountContext";
 import { useAccountDispatch } from "../context/AccountContext";
 import styled from "styled-components";
+import { useLoginModalDispatch, useLoginModalState } from "../context/LoginModalContext";
 
 export default function Header(){
 
     //모달 창 열림 여부
-  const [modalIsOpen, setIsOpen] = useState(false);
     function openModal() {
-      setIsOpen(true);
+      loginModalDispatch({type: "OPEN"});
     }
 
     function closeModal() {
-      setIsOpen(false);
+      loginModalDispatch({ type: "CLOSE" });
     }
     function afterOpenModal() {
         // references are now sync'd and can be accessed.
     }
 
   const accountState = useAccountState();
-  const dispatch = useAccountDispatch();
-  const onLogout = () => dispatch({ type: "LOGOUT" });
+  const accountDispatch = useAccountDispatch();
+  
+  const loginModalState = useLoginModalState();
+  const loginModalDispatch = useLoginModalDispatch();
+  
+  const onLogout = () => accountDispatch({ type: "LOGOUT" });
   
   let userSection = null;
 
@@ -65,11 +69,10 @@ export default function Header(){
           </Menu>
         </HeaderSection>
         <LoginModal
-          modalIsOpen={modalIsOpen}
+          modalIsOpen={loginModalState.isOpen}
           closeModal={closeModal}
           afterOpenModal={afterOpenModal}
         />
-
       </>
     );
 }

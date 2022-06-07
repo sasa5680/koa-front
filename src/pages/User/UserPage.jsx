@@ -132,12 +132,12 @@ const UserSection = styled.div`
   width: 100%;
   height: 320px;
   border-radius: 5px;
-  //border: 5px navy solid;
+  //border: 3px #314965 solid;
   align-items: center;
   justify-content: center;
 
-  box-shadow: 2px 2px 2px gray;
-  background-color: #e1e1e1;
+  box-shadow: 2px 10px 15px #e1e1e1;
+  background-color: white;
 
   .AvatarSection {
     display: flex;
@@ -152,7 +152,8 @@ const UserSection = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 5px;
-    color: yellowgreen;
+    font-weight: 600;
+    color: #314965;
   }
 
   .date {
@@ -167,8 +168,16 @@ const SocialSection = styled.div`
   margin-top: 10px;
   width: 100%;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px gray;
-  background-color: #e1e1e1;
+  //box-shadow: 2px 2px 2px gray;
+  box-shadow: 2px 10px 15px #e1e1e1;
+  background-color: white;
+  
+  .container {
+    width: 100%;
+    height: 25%;
+
+  }
+
   .icon {
     font-size: 150%;
   }
@@ -179,12 +188,14 @@ const SocialSection = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 10px;
+    font-weight: 600;
   }
 
   .item {
+
     display: flex;
-    //align-items: center;
-    //vertical-align: middle;
+    align-items: center;
+    vertical-align: middle;
     margin-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;

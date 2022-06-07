@@ -26,6 +26,8 @@ export default function Promotion({ match }) {
     image: [], //마지막?
     reply: [], //댓글 배열
     createdAt: "",
+    like: 0,
+    view: 0,
   });
 
   const like = async (id) => {
@@ -137,6 +139,15 @@ export default function Promotion({ match }) {
 
             <Row>
               <Col span={24}>
+                <InfoSection>
+                  <div class="info view">{`view: ${post.view}`}</div>
+                  <div class="info like">{`like: ${post.like}`}</div>
+                </InfoSection>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col span={24}>
                 <ReplySection>
                   <ReplyList reply={post.reply} postId={id}></ReplyList>
                 </ReplySection>
@@ -179,11 +190,40 @@ const StyledImg = styled.img`
   margin-top: 30px;
 `
 
+const InfoSection = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+
+  .info {
+    min-width: 120px;
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    margin-left: 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .view {
+    background-color: #287094;
+  }
+
+  .like {
+    background-color: #ff4d4f;
+  }
+`;
+
 const LikeSection = styled.div`
   margin-top: 100px;
   width: 80px;
-  height: 120px;
-  border: 2px black solid;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px #ff4d4f solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,7 +232,7 @@ const LikeSection = styled.div`
   font-size: 300%;
   cursor: pointer;
   transition: 0.2s;
-  color: red;
+  color: #ff4d4f;
 
   :hover {
     font-size: 350%;
