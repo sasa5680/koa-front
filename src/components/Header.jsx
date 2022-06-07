@@ -76,7 +76,7 @@ export default function Header(){
 
 const HeaderSection = styled.div`
   height: 12vh;
-  background-color: green;
+  background-color: #287094;
   //background-color: rgba(255, 255, 255, 0.0);
   display: flex;
   align-items: center;

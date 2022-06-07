@@ -5,6 +5,7 @@ import Reply from "./Reply";
 import styled from "styled-components";
 import { createReply } from "../../service/ServicePost";
 import { deleteReply } from "../../service/ServicePost";
+import { WechatFilled } from "@ant-design/icons";
 const { TextArea } = Input;
 
 export default function ReplyList( {reply, postId} ) {
@@ -69,6 +70,13 @@ export default function ReplyList( {reply, postId} ) {
 
   return (
     <>
+      <ReplyCount>          
+        <StyledReplyIcon/>
+        <Count>
+          {`${reply.length} Comments`}
+        </Count>
+      </ReplyCount>
+
       <Editor>
         <TextArea
           onChange={handleChange}
@@ -84,13 +92,29 @@ export default function ReplyList( {reply, postId} ) {
   );
 }
 
+const ReplyCount = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`
+const StyledReplyIcon = styled(WechatFilled)`
+  font-size: 50px;
+`
+
+const Count = styled.div`
+  font-size: 30px;
+  font-weight: 500;
+  margin-left: 20px;
+
+`
+
 const Editor = styled.div`
   
   width: 100%;
   display: flex;
 
 `
-
 const StyledButton = styled(Button)`
 
   height: 70px;

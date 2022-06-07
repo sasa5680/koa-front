@@ -43,7 +43,7 @@ const Title = styled.div`
   margin-bottom: 15px;
   margin-top: 15px;
 
-  color: #454545;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@ const Title = styled.div`
 
 const Content = styled.div`
   font-size: 15px;
-  color: #454545;
+  color: #ffffff;
   font-weight: 100;
 
   display: flex;

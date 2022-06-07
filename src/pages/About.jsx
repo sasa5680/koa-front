@@ -24,7 +24,7 @@ const Title = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    padding-top: 50px;
 
 `
 

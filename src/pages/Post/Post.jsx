@@ -88,7 +88,6 @@ export default function Promotion({ match }) {
                 <Title>{post.title}</Title>
               </Col>
             </Row>
-            {profile}
             {/* 유저 프로필, 작성시간 Row */}
             <Row style={{ marginTop: "30px", alignItems: "center" }}>
               <Col span={2}>
@@ -170,8 +169,8 @@ const ContentSection = styled.div`
 const Line = styled.div`
   margin-top: 20px;
   width: 100%;
-  height: 2px;
-  background-color: gold;
+  height: 3px;
+  background-color: #287094;
 `;
 
 const StyledImg = styled.img`

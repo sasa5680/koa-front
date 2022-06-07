@@ -131,12 +131,13 @@ const UserSection = styled.div`
   margin-bottom: 20px;
   width: 100%;
   height: 320px;
-  border-radius: 10px;
-  border: 5px navy solid;
+  border-radius: 5px;
+  //border: 5px navy solid;
   align-items: center;
   justify-content: center;
 
-  background-color: #fefec3;
+  box-shadow: 2px 2px 2px gray;
+  background-color: #e1e1e1;
 
   .AvatarSection {
     display: flex;
@@ -165,10 +166,9 @@ const UserSection = styled.div`
 const SocialSection = styled.div`
   margin-top: 10px;
   width: 100%;
-  border: 1px navy solid;
-  border-radius: 10px;
-  background-color: #fefec3;
-
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px gray;
+  background-color: #e1e1e1;
   .icon {
     font-size: 150%;
   }
@@ -189,7 +189,6 @@ const SocialSection = styled.div`
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 17px;
-    border-top: 1px solid navy;
 
     .type {
       padding-left: 10px;

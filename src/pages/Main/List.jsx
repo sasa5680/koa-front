@@ -71,11 +71,9 @@ const StyledLayout = styled(Layout)`
     opacity: 0.5;
   }
 
-  border: 2px black solid;
-  border-radius: 5px;
-  background-color: #fefec3;
+  background-color: #f6f6f6;
+  box-shadow: 10px 10px 10px gray;
 `;
-
 const StyledHeader = styled(Header)`
   width: 100%;
 
@@ -85,11 +83,12 @@ const StyledHeader = styled(Header)`
   font-size: 30px;
   font-weight: 700;
 
+  padding: 20px;
   overflow: hidden;
   padding: 0;
-
+  color: #314965;
   height: 55px;
-  background-color: #ffd228;
+  background-color: inherit;
 
   .inner {
     width: 90%;
@@ -110,8 +109,8 @@ const StyledContent = styled(Content)`
   width: 100%;
   overflow: hidden;
 
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   .inner {
     word-break: break-all;
@@ -127,14 +126,13 @@ const StyledContent = styled(Content)`
 `;
 
 const StyledFooter = styled(Footer)`
-  
   width: 100%;
 
-  background-color: #fff584;
+  background-color: #e1e1e1;
 
-  border-bottom-left-radius: ${border_radious};
-  border-bottom-right-radius: ${border_radious};
-  
+  //border-bottom-left-radius: ${border_radious};
+  //border-bottom-right-radius: ${border_radious};
+
   padding: 8px;
 
   display: flex;

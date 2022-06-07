@@ -5,7 +5,6 @@ import { MainBody } from "../../common/style";
 import { Col, Row } from "antd";
 
 import { readByPage } from "../../service/ServicePost";
-import Loading from "../../components/Loading";
 import List from "./List";
 import Nav from "./Nav";
 
@@ -101,7 +100,6 @@ export default function Main() {
 
 const MainSection = styled.div`
   ${MainBody}
-  background-color: #333;
 `;
 
 const NavSection = styled.div`

@@ -1,5 +1,7 @@
 import React from "react";
-import { Input, Row, Col, Select} from "antd";
+import { Input, Select, Button} from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+
 import styled from "styled-components";
 
 const { Search } = Input;
@@ -9,8 +11,20 @@ const onSearch = (value) => console.log(value);
 
 export default function Nav() {
 
+    let fetch;
+
+
     return (
       <Body>
+        <NewPost 
+          type="primary" 
+          icon={<PlusOutlined />} 
+          shape="round"
+          size="large"
+          onClick={()=>{window.location.href="/newpost"}}
+        >
+          New Post
+        </NewPost>
         <SearchSection>
           <Search
             placeholder="input search text"
@@ -24,6 +38,8 @@ export default function Nav() {
     );
 }
 
+
+
 const Body = styled.div`
     
     height: 65px;
@@ -34,6 +50,11 @@ const Body = styled.div`
     align-items: center;
 `
 
+const NewPost = styled(Button)`
+  cursor: pointer;
+  margin-left: 40px;
+
+`
 const SearchSection = styled.div`
     
     margin-left: auto;

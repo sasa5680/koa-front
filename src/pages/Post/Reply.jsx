@@ -1,4 +1,5 @@
-import { Row, Col, Avatar } from "antd";
+import { WechatFilled } from "@ant-design/icons";
+import { Row, Col, Avatar, Button } from "antd";
 import React from "react";
 import styled from "styled-components";
 import { dateConverter } from "../../utils/date";
@@ -13,7 +14,11 @@ export default function Reply({ data, index, handleDelete }) {
 
   const UpdateAndDelete = (
     <UpdateAndDeleteDiv>
-      <StyledButton onClick={() => handleDelete(data.id)}>
+      <StyledButton 
+        type="danger"
+        shape="round"
+        onClick={() => handleDelete(data.id)}
+      >
         delete
       </StyledButton>
     </UpdateAndDeleteDiv>
@@ -60,13 +65,13 @@ const ReplySection =styled.div`
 
 const AuthorDiv = styled.div`
   
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 25px;
+  font-weight: 600;
 `
 
 const ContentDiv = styled.div`
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 const TimeAndButtonDiv = styled.div`
@@ -75,15 +80,12 @@ const TimeAndButtonDiv = styled.div`
   align-items: center;
   color: gray;
 `
-const StyledButton = styled.button`
+const StyledButton = styled(Button)`
 
   width: 100px;
   height : 100%;
-  background-color: gold;
-  border-radius: 20px;
   cursor: pointer;
   margin-right: 20px;
-  color: black;
 `
 
 const UpdateAndDeleteDiv = styled.div`
