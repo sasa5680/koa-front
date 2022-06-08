@@ -46,3 +46,14 @@ export async function login(param) {
     const res = await axios.post(url, param);
     return res;
 }
+
+
+//로그인 요청
+export async function googleLogin(param) {
+
+
+    const url = AUTH_API_URL + "/login/google";
+
+    const res = await axios.post(url, param);
+    return res;
+}

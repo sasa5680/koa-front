@@ -109,7 +109,7 @@ export default function UserPage({ match }) {
           </Row>
         </Col>
         <Col offset={1} span={11}>
-          <TapSection id={userDataState._id}></TapSection>
+          <TapSection id={userDataState._id} intro={userDataState.intro}></TapSection>
         </Col>
       </Row>
 

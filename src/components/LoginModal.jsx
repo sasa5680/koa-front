@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { Modal, Button } from "antd";
 import { Form, Input, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-
+import { GoogleLogin } from "react-google-login"
 import styled from "styled-components";
 
 import { login } from "../service/ServiceAuth";
 import { useAccountDispatch } from "../context/AccountContext";
+import GoogleLoginBtn from "./GooleLogin";
 
 export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) {
 
@@ -128,6 +129,7 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
         <OrText>or</OrText>
         <Line />
       </OrArea>
+      <GoogleLoginBtn></GoogleLoginBtn>
     </StyledModel>
   );
 }

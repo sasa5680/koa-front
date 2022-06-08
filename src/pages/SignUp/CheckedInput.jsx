@@ -93,6 +93,6 @@ export default function CheckedInput({onCheck, name, rule, form}) {
 }
 
 const StyledInput = styled(Input)`
-  ${InputStyle}
-  overflow: hidden;
+/*   ${InputStyle}
+ */  overflow: hidden;
 `;

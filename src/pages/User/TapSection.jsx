@@ -7,13 +7,13 @@ import TabItem from "./Tab/TabItem";
 import PageNation from "../../components/PageNation";
 import UserPost from "./UserPost";
 
-export default function TapSection({id}) {
+export default function TapSection({id, intro}) {
 
     return (
       <Tabs>
         <TabItem name="소개">
           <Intro>
-            <div class = "inner">ddddd</div>
+            <div class = "inner">{intro}</div>
           </Intro>
         </TabItem>
         <TabItem name="작성글">

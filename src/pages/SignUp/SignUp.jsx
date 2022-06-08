@@ -111,7 +111,7 @@ export default function SignIn() {
         >
           <Row>
             <Col offset={3} span={18}>
-              <LogoBox>logo</LogoBox>
+              <LogoBox>Sign-Up Form</LogoBox>
             </Col>
           </Row>
 
@@ -303,22 +303,24 @@ const Box = styled.div`
   margin-top: 50px;
   margin-bottom: 50px;
   width: 380px;
-  border: 3px solid gold;
-  border-radius: 10px;
-  background-color: black;
+  //border: 3px solid gold;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 2px 10px 15px #e1e1e1;
 `;
 
 const Label = styled.div`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 const LogoBox = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: aliceblue;
+  font-size: 30px;
+  font-weight: 700;
+
   width: 100%;
-  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -327,23 +329,19 @@ const LogoBox = styled.div`
 const StyledItem = styled(Form.Item)``;
 
 const StyledInput = styled(Input)`
-  ${InputStyle}
-  overflow: hidden;
+/*   ${InputStyle}
+ */  overflow: hidden;
 `;
 
 const StyledPassword = styled(Input.Password)`
-  ${InputStyle}
+  /* ${InputStyle} */
 `;
 
 const StyledTextArea = styled(TextArea)`
-  ${InputStyle}
+  /* ${InputStyle} */
 `;
 
 const StyledButton = styled(Button)`
   width: 100%;
 `;
 
-const LoginBox = styled.div`
-  width: 380px;
-  border: 2px solid white;
-`;

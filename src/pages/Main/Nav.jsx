@@ -4,7 +4,6 @@ import { PlusOutlined } from "@ant-design/icons";
 
 import {
   useLoginModalDispatch,
-  useLoginModalState,
 } from "../../context/LoginModalContext";
 
 import {useAccountState} from "../../context/AccountContext"
@@ -12,7 +11,6 @@ import {useAccountState} from "../../context/AccountContext"
 import styled from "styled-components";
 
 const { Search } = Input;
-const { Option } = Select;
 
 const onSearch = (value) => console.log(value);
 

@@ -8,8 +8,8 @@ export default function Footer(){
     return (
       <FooterDiv>
         <div>
-          <Title>Rev.</Title>
-          <Content>copyright &copy; Rev.</Content>
+          <Title>KoaBoard</Title>
+          <Content>copyright &copy; KoaBoard.</Content>
           <Content>all rights reserved?</Content>
         </div>
       </FooterDiv>

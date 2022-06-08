@@ -9,8 +9,8 @@ import { Form, Input } from "antd";
 import { Upload, message, Textarea } from "antd";
 import { updateUser }  from "../../service/ServiceUser"
 
-
 import styled from "styled-components";
+const { TextArea } = Input;
 
 
 export default function UserUpdate({
@@ -134,6 +134,7 @@ export default function UserUpdate({
           email: user.contact.email,
           facebook: user.contact.facebook,
           twitter: user.contact.twitter,
+          intro: user.intro
         }}
         onFinish={onFinish}
       >
@@ -156,6 +157,13 @@ export default function UserUpdate({
             size="large"
             prefix={<TwitterOutlined className="site-form-item-icon" />}
             defaultValue={user.contact.twitter}
+          />
+        </Form.Item>
+
+        <Form.Item name="intro">
+          <TextArea
+            defaultValue={user.intro}
+            rows={6}
           />
         </Form.Item>
 

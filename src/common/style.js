@@ -36,7 +36,7 @@ export const TagStyle = css`
 `;
 
 export const InputStyle = css`
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px gold solid;
   overflow: hidden;
 
