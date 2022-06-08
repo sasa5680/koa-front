@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-       - name: 'Create env file'
+      - name: 'Create env file'
         run: |
           echo "REACT_APP_GOOGLE_LOGIN_API_KEY=$GOOGLE_LOGIN_API_KEY" >> .env.production
         env:
