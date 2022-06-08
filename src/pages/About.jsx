@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { ThemeProvider, css } from "styled-components";
 import { MainBody } from "../common/style";
 import antdlogo from "../assets/logo_antd.svg"
+import herokulogo from "../assets/logo_heroku.svg"
 
 console.log(antdlogo)
 
@@ -18,8 +19,9 @@ export default function About() {
               <div>
                 this web site is a simple Board made with KOA web framework.
               </div>
-              <div>you can upload post with images, leave a comment</div>
               <br />
+
+              <div>you can upload post with images, leave a comment</div>
               <div>
                 also, you can make your own account with your email or social
                 media
@@ -62,6 +64,31 @@ export default function About() {
                     <TechText>Mongoose js</TechText>
                   </TechItem>
                 </TechList>
+                <TechTitleSub>DevOps</TechTitleSub>
+                <TechList>
+                  <TechItem>
+                    <TechLogo src={herokulogo} />
+                    <TechText>heroku</TechText>
+                  </TechItem>
+                  <TechItem>
+                    <TechLogo src={require("../assets/logo_docker.webp")} />
+                    <TechText>Docker</TechText>
+                  </TechItem>
+                  <TechItem>
+                    <TechLogo src={require("../assets/logo_ec2.png")} />
+                    <TechText>Amazon EC2</TechText>
+                  </TechItem>
+                  <TechItem>
+                    <TechLogo src={require("../assets/logo_s3.png")} />
+                    <TechText>Amazon S3</TechText>
+                  </TechItem>
+                </TechList>
+              </DevSection>
+              <DevSection>
+                <TechTitle>Git Repository</TechTitle>
+                <a href="https://github.com/sasa5680/starbucks" target="_blank">
+                  Visit W3Schools.com!
+                </a>
               </DevSection>
             </Body>
           </Inner>
@@ -90,12 +117,13 @@ const Inner = styled.div`
 `
 
 const Title = styled.div`
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 600;
   ${(props) =>
     props.color &&
     css`
-      color: #0081c6;
+      color: ${({ theme }) => theme.colors.primary};
+
     `}
 `;
 

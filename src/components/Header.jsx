@@ -4,7 +4,7 @@ import { Affix, Button } from "antd";
 import LoginModal from "./LoginModal";
 import { useAccountState } from "../context/AccountContext";
 import { useAccountDispatch } from "../context/AccountContext";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { useLoginModalDispatch, useLoginModalState } from "../context/LoginModalContext";
 
 export default function Header(){
@@ -79,7 +79,7 @@ export default function Header(){
 
 const HeaderSection = styled.div`
   height: 12vh;
-  background-color: #287094;
+  background-color: ${({ theme }) => theme.colors.primary};
   //background-color: rgba(255, 255, 255, 0.0);
   display: flex;
   align-items: center;
@@ -148,10 +148,3 @@ const MenuLink = styled(Link)`
   font-weight: 500;
   text-decoration: none;
 `;
-
-const StyledAffix = styled(Affix)`
-  
-  position: absolute;
-  bottom: 200px;
-  right: 200px;
-`

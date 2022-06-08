@@ -68,11 +68,12 @@ const StyledLayout = styled(Layout)`
   cursor: pointer;
   margin-top: 20px;
   :hover {
-    opacity: 0.5;
+    opacity: 0.7;
+    transition: 0.2s;
   }
 
   background-color: #f6f6f6;
-  box-shadow: 10px 10px 10px gray;
+  box-shadow: 8px 8px 15px gray;
 `;
 const StyledHeader = styled(Header)`
   width: 100%;
@@ -86,7 +87,7 @@ const StyledHeader = styled(Header)`
   padding: 20px;
   overflow: hidden;
   padding: 0;
-  color: #314965;
+  color: ${({ theme }) => theme.colors.primary};
   height: 55px;
   background-color: inherit;
 

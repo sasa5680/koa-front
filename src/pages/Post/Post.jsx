@@ -181,7 +181,7 @@ const Line = styled.div`
   margin-top: 20px;
   width: 100%;
   height: 3px;
-  background-color: #287094;
+  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 const StyledImg = styled.img`
@@ -210,7 +210,7 @@ const InfoSection = styled.div`
   }
 
   .view {
-    background-color: #287094;
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 
   .like {

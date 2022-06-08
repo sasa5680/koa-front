@@ -4,8 +4,9 @@ import { useAccountDispatch } from "../context/AccountContext";
 import { googleLogin } from "../service/ServiceAuth";
 
 const clientId =
-  "880546170438-subugmdb1ci0l2akecfd6jblem4ai22d.apps.googleusercontent.com";
+  process.env.REACT_APP_GOOGLE_KEY;
 
+console.log(process.env.REACT_APP_GOOGLE_KEY);
 export default function GoogleLoginBtn({ onGoogleLogin }) {
   
   const dispatch = useAccountDispatch();

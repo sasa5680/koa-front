@@ -136,7 +136,7 @@ const UserSection = styled.div`
   align-items: center;
   justify-content: center;
 
-  box-shadow: 2px 10px 15px #e1e1e1;
+  box-shadow: ${({ theme }) => theme.colors.shadow};
   background-color: white;
 
   .AvatarSection {
@@ -153,7 +153,7 @@ const UserSection = styled.div`
     justify-content: center;
     margin-top: 5px;
     font-weight: 600;
-    color: #314965;
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   .date {

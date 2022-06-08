@@ -7,6 +7,9 @@ const theme = {
   },
 };
 
+export const Shadow = css`
+  box-shadow: 2px 10px 15px #e1e1e1;
+`;
 
 export const ThemaLight = css`
   background-color: #fefec3;
@@ -18,6 +21,12 @@ export const MainBody = css`
   margin-left: auto;
   margin-right: auto;
   width: 900px;
+
+  @media screen and (max-width: 900px) {
+    
+    width: 100%;
+    
+  }
 `
 
 export const TagStyle = css`
