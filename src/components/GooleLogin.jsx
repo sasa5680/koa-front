@@ -6,7 +6,7 @@ import { googleLogin } from "../service/ServiceAuth";
 const clientId =
   process.env.REACT_APP_GOOGLE_KEY;
 
-console.log(process.env.REACT_APP_GOOGLE_KEY);
+console.log(process.env.REACT_APP_GOOGLE_LOGIN_API_KEY);
 export default function GoogleLoginBtn({ onGoogleLogin }) {
   
   const dispatch = useAccountDispatch();
