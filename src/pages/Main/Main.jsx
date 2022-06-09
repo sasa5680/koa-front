@@ -8,38 +8,26 @@ import { readByPage } from "../../service/ServicePost";
 import List from "./List";
 import Nav from "./Nav";
 
+import { usePostListState, usePostListDispatch } from "../../context/PostListContext";
+
 export default function Main() {
   
-  //포스트 상태
-  const [postsState, setPostsState] = useState({
-    Posts: [], //게시글 목록
-    isLoading: false, //로딩중 여부
-    page: 1, // 현재 페이지
-    isLast: false, //마지막 페이지 여부
-    isError: false, //에러 여부
-  });
+  const postListState = usePostListState();
+  const postListdispatch = usePostListDispatch();
 
   const fetch = async (page) => {
     try {
+
+      postListdispatch({ type: "LOADING"});
+
       const response = await readByPage(page);
       //성공하면 페이지 정보를 갱신한다.
-
-      console.log(response);
-      setPostsState({
-        ...postsState,
-        page: postsState.page + 1,
-        isLast: response.data.last,
-        Posts: postsState.Posts.concat(response.data.content),
-        isLoading: false,
-      });
+      
+      postListdispatch({type: "FETCH", action: response.data})
+      
     } catch (error) {
 
-      setPostsState({
-        ...postsState,
-        isLoading: false,
-        isError: true,
-      });      
-      
+      postListdispatch({ type: "ERROR" });
     }
   }
 
@@ -47,13 +35,15 @@ export default function Main() {
   const onIntersect = async (entries, observer) => {
     entries.forEach(async (entry) => {
       if (entry.isIntersecting) {
-        if (postsState.isLast) {
+        if (postListState.isLast) {
           console.log("last");
           return;
         }
         observer.unobserve(entry.target);
         //새로 데이터를 요청한다.
-        fetch(postsState.page);
+        const fetch = postListState.fetch;
+        console.log(postListState);
+        fetch(postListState.page+1);
         console.log("fetch new");
       }
     });
@@ -71,7 +61,12 @@ export default function Main() {
       observer.observe(target.current);
     }
     return () => observer && observer.disconnect();
-  }, [postsState.Posts]);
+  }, [postListState.Posts]);
+
+  useEffect(()=>{
+    postListdispatch({ type: "NEW", action: fetch });
+  }, [])
+
 
   return (
     <>
@@ -83,13 +78,13 @@ export default function Main() {
             </NavSection>
           </Col>
         </Row>
-        <List post={postsState.Posts}></List>
+        <List post={postListState.Posts}></List>
 
         <Row>
           <Col span={24}>
             <InterSection ref={target}>
-              {postsState.isLoading && <h2>Loading</h2>}
-              {postsState.isError && <h2>Error</h2>}
+              {postListState.isLoading && <h2>Loading</h2>}
+              {postListState.isError && <h2>Error</h2>}
             </InterSection>
           </Col>
         </Row>
@@ -109,6 +104,5 @@ const NavSection = styled.div`
 const InterSection = styled.div`
   width: 100%;
   height: 50px;
-  //background-color: red;
 `;
 

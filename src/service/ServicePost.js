@@ -21,7 +21,7 @@ export async function readPost(id) {
 //페이지 기준으로 읽어온다.
 export async function readByPage(page) {
 
-  console.log(POST_API_URL);
+  console.log('read by page');
   const URL = POST_API_URL + `/list?page=${page}&size=${4}`
   const res = await axios.get(URL);
 
@@ -31,12 +31,22 @@ export async function readByPage(page) {
 
 //유저가 작성한 게시물을 가져온다.
 export async function readByPageAndUser(page, userId) {
-  console.log(POST_API_URL);
   const URL = POST_API_URL + `/list/${userId}?page=${page}&size=${10}`;
   const res = await axios.get(URL);
 
   return res;
 }
+
+//검색어로 게시물을 가져온다.
+export async function readByPageAndQuery(page, query) {
+  console.log(query);
+  const URL = POST_API_URL + `/list/${query}?page=${page}&size=${4}`;
+  const res = await axios.get(URL);
+
+  return res;
+}
+
+
 //게시물 생성
 export async function createPost(formData) {
   const CREAT_URL = POST_API_URL + "/create";

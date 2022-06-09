@@ -9,6 +9,7 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "./common/theme";
 import MainView from "./components/MainView";
 import Footer from "./components/Footer";
+import { PostListProvider } from './context/PostListContext';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         components={[
           <AccountProvider children={<Pipe />} />,
           <LoginModalProvider children={<Pipe />} />,
+          <PostListProvider children={<Pipe />} />,
           <BrowserRouter>
             <AccountProvider>
               <Header></Header>

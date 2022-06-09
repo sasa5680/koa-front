@@ -9,12 +9,11 @@ const { Header, Footer, Sider, Content } = Layout;
 
 export default function List({post}) {
 
-  console.log(post)
-
   const moveLink = (id) => {
     window.location.href = `/post/${id}`;
   }
 
+  console.log(post)
   const postList = post.map((data, index) => (
     <>
       <StyledLayout
@@ -49,7 +48,6 @@ export default function List({post}) {
     </>
   ));
 
-
     return (
       <>
         <Container>{postList}</Container>
@@ -57,10 +55,8 @@ export default function List({post}) {
     );
 }
 
-const Container = styled.div`
-  
+const Container = styled.div` 
 `
-
 const border_radious = "10px"
 const maginLeft = "20px";
 

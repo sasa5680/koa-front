@@ -2,26 +2,31 @@ import React from "react";
 import { Input, Select, Button} from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 
+import { readByPageAndQuery } from "../../service/ServicePost";
+
 import {
   useLoginModalDispatch,
 } from "../../context/LoginModalContext";
 
 import {useAccountState} from "../../context/AccountContext"
+import {
+  usePostListState,
+  usePostListDispatch,
+} from "../../context/PostListContext";
 
 import styled from "styled-components";
 
 const { Search } = Input;
 
-const onSearch = (value) => console.log(value);
 
 export default function Nav() {
 
-  let fetch;
-  
   const accountState = useAccountState();
-
   const loginModalDispatch = useLoginModalDispatch();
   
+  const postListState = usePostListState();
+  const postListdispatch = usePostListDispatch();
+
   const onClickNewPost = () => {
 
     if(accountState.isLogin){
@@ -31,6 +36,26 @@ export default function Nav() {
     }
 
   }
+
+  const onSearch = (value) => {
+      const fetch = async (page) => {
+        try {
+          console.log('read by query');
+          postListdispatch({ type: "LOADING" });
+
+          const response = await readByPageAndQuery(page, value);
+          //성공하면 페이지 정보를 갱신한다.
+
+          postListdispatch({ type: "FETCH", action: response.data });
+        } catch (error) {
+          postListdispatch({ type: "ERROR" });
+        }
+      };
+
+      postListdispatch({ type: "NEW", action: fetch });
+
+  }
+
 
     return (
       <Body>

@@ -214,7 +214,7 @@ const InfoSection = styled.div`
   }
 
   .like {
-    background-color: #ff4d4f;
+    background-color: ${({ theme }) => theme.colors.red};
   }
 `;
 
