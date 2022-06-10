@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { login } from "../service/ServiceAuth";
 import { useAccountDispatch } from "../context/AccountContext";
 import GoogleLoginBtn from "./GooleLogin";
+import KakaoLoginBtn from "./KakaoLogin";
 
 export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) {
 
@@ -130,6 +131,7 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
         <Line />
       </OrArea>
       <GoogleLoginBtn></GoogleLoginBtn>
+      <KakaoLoginBtn></KakaoLoginBtn>
     </StyledModel>
   );
 }

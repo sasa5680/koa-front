@@ -21,7 +21,9 @@ export default function About() {
               </div>
               <br />
 
-              <div>you can upload post with images, leave a comment</div>
+              <div>
+                you can upload post with images, leave a comment, and etc.
+              </div>
               <div>
                 also, you can make your own account with your email or social
                 media
@@ -86,9 +88,22 @@ export default function About() {
               </DevSection>
               <DevSection>
                 <TechTitle>Git Repository</TechTitle>
-                <a href="https://github.com/sasa5680/starbucks" target="_blank">
-                  Visit W3Schools.com!
-                </a>
+                <div>
+                  <a
+                    href="https://github.com/sasa5680/starbucks"
+                    target="_blank"
+                  >
+                    Front-End Repository
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="https://github.com/sasa5680/starbucks"
+                    target="_blank"
+                  >
+                    Back-End Repository
+                  </a>
+                </div>
               </DevSection>
             </Body>
           </Inner>
@@ -180,6 +195,12 @@ const TechItem = styled.li`
   margin-top: 20px;
 `;
 
+const StyledLink = styled.a`
+  
+  margin-top: 10px;
+  display: inline-block;
+
+`
 const MainSection = styled.div`
   ${MainBody}
 `;

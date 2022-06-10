@@ -90,17 +90,20 @@ const HeaderSection = styled.div`
 `;
 
 const Logo = styled.div`
-
   height: 100%;
   display: flex;
-  font-size: 35px;
-  margin-left: 70px;
+  font-size: 3.5rem;
+  margin-left: 7rem;
   position: sticky;
   top: 0px;
-
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 700px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 const LogoLink = styled(Link)`
@@ -117,6 +120,11 @@ const Menu = styled.div `
   display: flex;
   align-items: center;
   justify-content: center;
+  
+
+  @media screen and (max-width: 700px) {
+    display: none; 
+  }
 `;
 
 const MenuLine = styled.div`

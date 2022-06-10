@@ -1,6 +1,6 @@
 import React from "react";
 import { Input, Select, Button} from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, FormOutlined } from "@ant-design/icons";
 
 import { readByPageAndQuery } from "../../service/ServicePost";
 
@@ -68,6 +68,15 @@ export default function Nav() {
         >
           New Post
         </NewPost>
+        <NewPostSmall
+          type="primary"
+          icon={<PlusOutlined />}
+          shape="round"
+          size="large"
+          onClick={onClickNewPost}
+        >
+          <FormOutlined />
+        </NewPostSmall>
         <SearchSection>
           <Search
             placeholder="input search text"
@@ -98,14 +107,33 @@ const NewPost = styled(Button)`
   cursor: pointer;
   margin-left: 40px;
 
+  @media screen and (max-width: 600px){
+    display: none;
+  }
 `
+
+const NewPostSmall = styled(Button)`
+  cursor: pointer;
+  margin-left: 40px;
+  display: none;
+
+  @media screen and (max-width: 600px) {
+    display:block;
+    margin-left: 10px;
+  }
+`;
 const SearchSection = styled.div`
-    
-    margin-left: auto;
-    margin-right: 30px;
-    width: 50%;
-    display: flex;
-`
+  margin-left: auto;
+  margin-right: 30px;
+  width: 50%;
+  display: flex;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+`;
 
 const StyledSearch = styled(Search)`
     
