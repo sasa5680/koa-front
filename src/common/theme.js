@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-const pixelToRem = (size) => `${size / 16}rem`; 
+const pixelToRem = (size) => `${size / 16}rem`;
 
 const fonts = {
 
+  title: "5.0rem",
+  
 }
 
 const colors = {
@@ -13,15 +15,13 @@ const colors = {
 };
 
 const common = {
-  
   flexCenter: `
     display: flex;
     justify-contents: center;
     align-items: center;
   `,
-  
 
-}
+};
 const theme = {
   colors,
   common,

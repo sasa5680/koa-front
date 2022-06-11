@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Affix, Button } from "antd";
 import LoginModal from "./LoginModal";
-import { useAccountState } from "../context/AccountContext";
-import { useAccountDispatch } from "../context/AccountContext";
-import styled, { ThemeProvider } from "styled-components";
-import { useLoginModalDispatch, useLoginModalState } from "../context/LoginModalContext";
+import { useAccountState, 
+        useAccountDispatch 
+} from "../context/AccountContext";
+import {
+  useLoginModalDispatch,
+  useLoginModalState,
+} from "../context/LoginModalContext";
 
+import styled from "styled-components";
+import OffCanvas from "./OffCanvas";
 export default function Header(){
 
     //모달 창 열림 여부
@@ -61,6 +65,9 @@ export default function Header(){
           <Logo>
             <LogoLink to={`/`}>KoaBoard</LogoLink>
           </Logo>
+          <StyledOff>
+            <OffCanvas />
+          </StyledOff>
           <Menu>
             <MenuItem>
               <MenuLink to={`/about`}>ABOUT</MenuLink>
@@ -79,7 +86,13 @@ export default function Header(){
 
 const HeaderSection = styled.div`
   height: 12vh;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(
+    45deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(12, 12, 129, 1) 48%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  //background-color: ${({ theme }) => theme.colors.primary};
   //background-color: rgba(255, 255, 255, 0.0);
   display: flex;
   align-items: center;
@@ -87,6 +100,10 @@ const HeaderSection = styled.div`
   position: -webkit-sticky;
   //position: sticky;
   top: 0;
+
+  @media screen and (max-width: 700px) {
+    height: 9vh;
+  }
 `;
 
 const Logo = styled.div`
@@ -127,13 +144,15 @@ const Menu = styled.div `
   }
 `;
 
-const MenuLine = styled.div`
-  
-  width: 3px;
-  height: 40%;
-  background-color: #676767;
-
-`
+const StyledOff = styled.div`
+  display: none;
+  background-color: aliceblue;
+  @media screen and (max-width: 700px) {
+    display: contents;
+    margin-left: auto;
+    margin-right: 10px;
+  }
+`;
 
 const MenuItem = styled.div`
   font-size: 15px;

@@ -31,7 +31,9 @@ export async function readByPage(page) {
 
 //유저가 작성한 게시물을 가져온다.
 export async function readByPageAndUser(page, userId) {
-  const URL = POST_API_URL + `/list/${userId}?page=${page}&size=${10}`;
+  const URL = POST_API_URL + `/list/user/${userId}?page=${page}&size=${10}`;
+  
+  console.log(URL)
   const res = await axios.get(URL);
 
   return res;
@@ -40,7 +42,7 @@ export async function readByPageAndUser(page, userId) {
 //검색어로 게시물을 가져온다.
 export async function readByPageAndQuery(page, query) {
   console.log(query);
-  const URL = POST_API_URL + `/list/${query}?page=${page}&size=${4}`;
+  const URL = POST_API_URL + `/list/query/${query}?page=${page}&size=${4}`;
   const res = await axios.get(URL);
 
   return res;

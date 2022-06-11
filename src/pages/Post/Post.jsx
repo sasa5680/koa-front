@@ -10,6 +10,7 @@ import ReplyList from "./ReplyList";
 import { useAccountState } from "../../context/AccountContext";
 import { dateConverter } from "../../utils/date";
 import Loading from "../../components/Loading";
+import { MainBody } from "../../common/style";
 
 export default function Promotion({ match }) {
   const accountState = useAccountState();
@@ -81,84 +82,71 @@ export default function Promotion({ match }) {
 
   return (
     <Loading fetch={fetchItems}>
-      <Row>
-        <Col offset={5} span={14}>
-          <Section>
-            {/* Title Row */}
-            <Row>
-              <Col span={24}>
-                <Title>{post.title}</Title>
-              </Col>
-            </Row>
-            {/* 유저 프로필, 작성시간 Row */}
-            <Row style={{ marginTop: "30px", alignItems: "center" }}>
-              <Col span={2}>
-                <Avatar
-                  size={50}
-                  src={profile}
-                  //icon={<UserOutlined />}
-                />
-              </Col>
-              <Col span={3}>
-                <Link to={`/user/${post.profile.username}`}>
-                  <h2>{post.profile.username}</h2>
-                </Link>
-              </Col>
-              <Col offset={15} span={4}>
-                <h2>{dateConverter(post.createdAt)}</h2>
-              </Col>
-            </Row>
+      <MainSection>
+        
+        {/* 게시물 타이틀 */}
+        <Title>{post.title}</Title>
 
-            <Row>
-              <Col span={24}>
-                <Line></Line>
-              </Col>
-            </Row>
-            <Row>
-              <Col span={24}>
-                <ContentSection>{post.content}</ContentSection>
-              </Col>
-            </Row>
+        {/* 게시물 정보 */}
+        <PostInfo>
+          <Avatar
+            size={50}
+            src={profile}
+            //icon={<UserOutlined />}
+          />
+          <Link to={`/user/${post.profile.username}`}>
+            <h2>{post.profile.username}</h2>
+          </Link>
+          <h2>{dateConverter(post.createdAt)}</h2>
+        </PostInfo>
 
-            {/* 이미지 리스트 Row */}
-            <Row>
-              <Col>{imageList}</Col>
-            </Row>
+        <Line />
 
-            <Row>
-              <Col span={24}>
-                <LikeSection
-                  onClick={() => {
-                    like(id);
-                  }}
-                >
-                  <HeartFilled />
-                </LikeSection>
-              </Col>
-            </Row>
+        {/* 게시물 텍스트 */}
+        <ContentSection>{post.content}</ContentSection>
+        
+        {/* 이미지 리스트 */}
+        {imageList}
 
-            <Row>
-              <Col span={24}>
-                <InfoSection>
-                  <div class="info view">{`view: ${post.view}`}</div>
-                  <div class="info like">{`like: ${post.like}`}</div>
-                </InfoSection>
-              </Col>
-            </Row>
+        {/* 좋아요 */}
+        <LikeSection
+          onClick={() => {
+            like(id);
+          }}
+        >
+          <HeartFilled />
+        </LikeSection>
 
-            <Row>
-              <Col span={24}>
-                <ReplySection>
-                  <ReplyList reply={post.reply} postId={id}></ReplyList>
-                </ReplySection>
-              </Col>
-            </Row>
-          </Section>
-        </Col>
-      </Row>
+        {/* 기타정보 */}
+        <InfoSection>
+          <div class="info view">{`view: ${post.view}`}</div>
+          <div class="info like">{`like: ${post.like}`}</div>
+        </InfoSection>
+
+        {/* 댓글 */}
+        <ReplySection>
+          <ReplyList reply={post.reply} postId={id}></ReplyList>
+        </ReplySection>
+      </MainSection>
     </Loading>
   );
 }
+
+const MainSection = styled.div`
+  ${MainBody}
+`;
+
+const Title = styled.div`
+  margin-top: 30px;
+  font-size: 50px;
+  font-weight: bolder;
+`;
+
+const PostInfo = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+`
 
 const Section = styled.div`
   margin-top: 50px;
@@ -167,10 +155,7 @@ const Section = styled.div`
   width: 100%;
   //border: 3px yellowgreen solid;
 `;
-const Title = styled.div`
-  font-size: 50px;
-  font-weight: bolder;
-`;
+
 const ContentSection = styled.div`
   margin-top: 30px;
   font-size: 30px;

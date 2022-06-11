@@ -138,6 +138,7 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
 
 const StyledModel = styled(Modal)`
   overflow: auto;
+  z-index: 200;
   //border-radius: 20px;
   //border: 5px gold solid;
 `;

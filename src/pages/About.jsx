@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled, { ThemeProvider, css } from "styled-components";
 import { MainBody } from "../common/style";
 import antdlogo from "../assets/logo_antd.svg"
@@ -128,7 +128,6 @@ const Inner = styled.div`
     width: 85%;
     margin-top: 50px;
     margin-bottom: 50px;
-
 `
 
 const Title = styled.div`
@@ -138,14 +137,21 @@ const Title = styled.div`
     props.color &&
     css`
       color: ${({ theme }) => theme.colors.primary};
-
     `}
+
+  @media screen and (max-width: 700px) {
+    font-size: 40px;
+  }
 `;
 
 const Body = styled.div`
   margin-top: 110px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
+
+  @media screen and (max-width: 700px) {
+    font-size: 18px;
+  }
 `;
 
 const DevSection = styled.div`
@@ -193,14 +199,12 @@ const TechItem = styled.li`
   display: flex;
   width: calc(100% / 2);
   margin-top: 20px;
+
+  @media screen and (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
-const StyledLink = styled.a`
-  
-  margin-top: 10px;
-  display: inline-block;
-
-`
 const MainSection = styled.div`
   ${MainBody}
 `;
