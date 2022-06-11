@@ -96,11 +96,15 @@ const StyledHeader = styled(Header)`
     display: flex;
     align-items: center;
   }
+
+  @media screen and (max-width: 700px) {
+    //display: none;
+  }
 `;
 
 const StyledContent = styled(Content)`
   font-size: 20px;
-  font-weight: 500;
+  height: 55px;
 
   //margin-left: ${maginLeft};
   width: 100%;
@@ -138,7 +142,6 @@ const StyledFooter = styled(Footer)`
 `;
 
 const UserProfile = styled.div`
-  
   margin-left: 10px;
   display: flex;
   align-items: center;
@@ -150,8 +153,16 @@ const UserProfile = styled.div`
     padding-left: 10px;
     font-size: 20px;
     font-weight: 500;
+
+    @media screen and (max-width: 700px) {
+      padding-left: 5px;
+    }
   }
-` 
+
+  @media screen and (max-width: 700px) {
+    margin-left: 5px;
+  }
+`; 
 
 const PostProfile = styled.div`
   display: flex;
@@ -168,7 +179,11 @@ const PostProfile = styled.div`
 
     margin-right: 10px;
 
-    div{
+    @media screen and (max-width: 700px) {
+      margin-right: 4px;
+    }
+
+    div {
       margin-left: 8px;
     }
   }

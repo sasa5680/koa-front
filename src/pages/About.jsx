@@ -19,6 +19,9 @@ export default function About() {
               <div>
                 this web site is a simple Board made with KOA web framework.
               </div>
+              <div>
+                I made this web site to study KOA, React, and Devops.
+              </div>
               <br />
 
               <div>
@@ -121,14 +124,20 @@ const Section = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 700px) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 `;
 
 const Inner = styled.div`
-    
-    width: 85%;
-    margin-top: 50px;
-    margin-bottom: 50px;
-`
+  width: 85%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  //background-color: blue;
+
+`;
 
 const Title = styled.div`
   font-size: 50px;
@@ -141,6 +150,7 @@ const Title = styled.div`
 
   @media screen and (max-width: 700px) {
     font-size: 40px;
+    margin-top: 0px;
   }
 `;
 

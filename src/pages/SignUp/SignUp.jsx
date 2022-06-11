@@ -307,6 +307,12 @@ const Box = styled.div`
   border-radius: 5px;
   background-color: white;
   box-shadow: 2px 10px 15px #e1e1e1;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    box-shadow: none;
+  }
 `;
 
 const Label = styled.div`

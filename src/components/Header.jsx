@@ -38,10 +38,14 @@ export default function Header(){
   //로그인 상태가 아닐경우
   if(!accountState.isLogin){
     userSection = (
-      
-      <MenuItem>
-        <div onClick={openModal}>login</div>
-      </MenuItem>
+      <>
+        <MenuItem>
+          <div onClick={openModal}>login</div>
+        </MenuItem>
+        <MenuItem>
+          <MenuLink to={`/signup`}>SIGN UP</MenuLink>
+        </MenuItem>
+      </>
     );
 
   } else {
@@ -102,7 +106,7 @@ const HeaderSection = styled.div`
   top: 0;
 
   @media screen and (max-width: 700px) {
-    height: 9vh;
+    height: 7.0vh;
   }
 `;
 
@@ -118,8 +122,9 @@ const Logo = styled.div`
   justify-content: center;
 
   @media screen and (max-width: 700px) {
-    margin-left: auto;
+    margin-left: 5px;
     margin-right: auto;
+    font-size: 2.8rem;
   }
 `;
 
