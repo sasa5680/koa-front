@@ -66,56 +66,46 @@ export default function UserPage({ match }) {
 
   return (
     <Loading fetch={fetchItems}>
-      <Row style={{ marginTop: "40px", marginBottom: "40px" }}>
-        <Col offset={3} span={6}>
-          <Row>
-            {/* 유저 프로필 섹션 */}
-            <UserSection>
-              <div class="AvatarSection">
-                <Avatar
-                  size={140}
-                  src= {userDataState.profile.thumbnail}
-                ></Avatar>
-              </div>
-              <div class="nickname">{userDataState.profile.username}</div>
-              <div class="date">
-                <CalendarOutlined />
-                {dateConverter(userDataState.createdAt)}
-              </div>
-              {accountState.username == match.params.username && (
-                <Button onClick={openModal}>회원정보 수정</Button>
-              )}
-            </UserSection>
-
-            {/* 소셜 연락처 섹션 */}
-            <SocialSection>
-              <div class="title">CONTACT</div>
-              <div class="item">
-                <MailOutlined style={{ fontSize: "150%" }} />
-                <div class="type">Email</div>
-                <div class="data">{userDataState.contact.email}</div>
-              </div>
-              <div class="item">
-                <FacebookOutlined style={{ fontSize: "150%" }} />
-                <div class="type">Facebook</div>
-                <div class="data">{userDataState.contact.facebook}</div>
-              </div>
-              <div class="item">
-                <TwitterOutlined style={{ fontSize: "150%" }} />
-                <div class="type">Twitter</div>
-                <div class="data">{userDataState.contact.twitter}</div>
-              </div>
-            </SocialSection>
-          </Row>
-        </Col>
-        <Col offset={1} span={11}>
-          <TapSection id={userDataState._id} intro={userDataState.intro}></TapSection>
-        </Col>
-      </Row>
-
-      <Row gutter={10}>
-        <Col offset={4} span={16}></Col>
-      </Row>
+      <Body>
+          <UserSection>
+            <div class="AvatarSection">
+              <Avatar size={140} src={userDataState.profile.thumbnail}></Avatar>
+            </div>
+            <div class="nickname">{userDataState.profile.username}</div>
+            <div class="date">
+              <CalendarOutlined />
+              {dateConverter(userDataState.createdAt)}
+            </div>
+            {accountState.username == match.params.username && (
+              <Button onClick={openModal}>회원정보 수정</Button>
+            )}
+          </UserSection>
+          <SocialSection>
+            <div class="title">CONTACT</div>
+            <div class="item">
+              <MailOutlined style={{ fontSize: "150%" }} />
+              <div class="type">Email</div>
+              <div class="data">{userDataState.contact.email}</div>
+            </div>
+            <div class="item">
+              <FacebookOutlined style={{ fontSize: "150%" }} />
+              <div class="type">Facebook</div>
+              <div class="data">{userDataState.contact.facebook}</div>
+            </div>
+            <div class="item">
+              <TwitterOutlined style={{ fontSize: "150%" }} />
+              <div class="type">Twitter</div>
+              <div class="data">{userDataState.contact.twitter}</div>
+            </div>
+          </SocialSection>
+        <Tab>
+          <TapSection
+            id={userDataState._id}
+            intro={userDataState.intro}
+          ></TapSection>
+        </Tab>
+      </Body>
+      
       <UserUpdate
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
@@ -126,10 +116,62 @@ export default function UserPage({ match }) {
   );
 }
 
+const Body = styled.div`
+  position: relative;
+  //display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 1150px;
+  height: 550px;
+
+  @media screen and (max-width: 1150px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: fit-content;
+  }
+`;
+
+const Tab = styled.div`
+  margin-left: auto;
+  width: 60%;
+  height: 100%;
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+
+    height: 550px;
+  }
+`;
+
+const User = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  margin-right: auto;
+
+  
+`
+
 const UserSection = styled.div`
   //margin-top: 20px;
-  margin-bottom: 20px;
-  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  //margin-bottom: 20px;
+  width: 35%;
   height: 320px;
   border-radius: 5px;
   //border: 3px #314965 solid;
@@ -143,7 +185,7 @@ const UserSection = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    padding-top: 20px;
   }
 
   .nickname {
@@ -162,20 +204,32 @@ const UserSection = styled.div`
     justify-content: center;
     font-size: 20px;
   }
+
+  @media screen and (max-width: 800px) {
+    
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  
+  }
 `;
 
 const SocialSection = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+
   margin-top: 10px;
-  width: 100%;
+  width: 35%;
   border-radius: 5px;
   //box-shadow: 2px 2px 2px gray;
   box-shadow: 2px 10px 15px #e1e1e1;
   background-color: white;
-  
+
   .container {
     width: 100%;
     height: 25%;
-
   }
 
   .icon {
@@ -192,7 +246,6 @@ const SocialSection = styled.div`
   }
 
   .item {
-
     display: flex;
     align-items: center;
     vertical-align: middle;
@@ -210,5 +263,13 @@ const SocialSection = styled.div`
       margin-left: auto;
       margin-right: 20px;
     }
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+  
   }
 `;

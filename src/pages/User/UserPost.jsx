@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { readByPageAndUser } from "../../service/ServicePost";
 import PageNation from "../../components/PageNation";
@@ -24,10 +25,12 @@ export default function UserPost({id}) {
   };  
 
   const list = userPostState.content.map((data, index)=>{
+    console.log(data);
     return (
-    <PostList>
-      {data.title}
-    </PostList>);
+      <PostList>
+        <MenuLink to={`/post/${data.postNum}`}>{data.title}</MenuLink>
+      </PostList>
+    );
   })
 
   return (
@@ -63,9 +66,7 @@ const Body =styled.div`
   
   width: 100%;
   height: 90%;
-
 `
-
 const Footer = styled.div`
   width: 100%;
   height: 10%;
@@ -80,4 +81,10 @@ const PostList = styled.div`
   width: 100%;
   height: 10%;
   font-size: 15px;
+`;
+
+const MenuLink = styled(Link)`
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
 `;

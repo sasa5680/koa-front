@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { readPost, likePost } from "../../service/ServicePost";
 import styled from "styled-components";
-import { Col, Row, Avatar, Button, message  } from "antd";
+import { Col, Avatar, Button, message  } from "antd";
 
 import { UserOutlined, HeartFilled } from "@ant-design/icons";
 import ReplyList from "./ReplyList";
@@ -83,7 +83,6 @@ export default function Promotion({ match }) {
   return (
     <Loading fetch={fetchItems}>
       <MainSection>
-        
         {/* 게시물 타이틀 */}
         <Title>{post.title}</Title>
 
@@ -97,14 +96,14 @@ export default function Promotion({ match }) {
           <Link to={`/user/${post.profile.username}`}>
             <h2>{post.profile.username}</h2>
           </Link>
-          <h2>{dateConverter(post.createdAt)}</h2>
+          <Date>{dateConverter(post.createdAt)}</Date>
         </PostInfo>
 
         <Line />
 
         {/* 게시물 텍스트 */}
         <ContentSection>{post.content}</ContentSection>
-        
+
         {/* 이미지 리스트 */}
         {imageList}
 
@@ -140,7 +139,22 @@ const Title = styled.div`
   margin-top: 30px;
   font-size: 50px;
   font-weight: bolder;
+
+  @media screen and (max-width: 700px) {
+    font-size: 40px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 30px;
+  }
 `;
+
+const Date = styled.div`
+  margin-left: auto;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 600;
+`
 
 const PostInfo = styled.div`
   display: flex;
@@ -160,6 +174,14 @@ const ContentSection = styled.div`
   margin-top: 30px;
   font-size: 30px;
   word-break: break-all;
+
+  @media screen and (max-width: 700px) {
+    font-size: 25px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 
 const Line = styled.div`

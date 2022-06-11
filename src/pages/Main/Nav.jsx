@@ -93,15 +93,20 @@ export default function Nav() {
 
 
 const Body = styled.div`
-    
-    border-radius: 5px;
-    height: 65px;
-    width: 100%;
-    background-color: #161671;
+  border-radius: 5px;
+  height: 65px;
+  width: 100%;
+  background-color: #161671;
 
-    display: flex;
-    align-items: center;
-`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 600px) {
+    height: 55px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+`;
 
 const NewPost = styled(Button)`
   cursor: pointer;

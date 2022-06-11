@@ -10,7 +10,7 @@ const fonts = {
 
 const colors = {
   primary: "#287094",
-  res: "##ff4d4f",
+  red: "#ff4d4f",
   shadow: "2px 10px 15px #e1e1e1",
 };
 
