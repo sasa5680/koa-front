@@ -45,6 +45,7 @@ const ReplySection =styled.div`
   display: flex;
   width: 100%;
   margin-top: 30px;
+  margin-bottom: 20px;
 `
 const AvatarDiv = styled.div`
   width: 70px;

@@ -6,7 +6,7 @@ const LoadingSection = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60vh;
+  height: 80vh;
 `;
 
 export default function DefaultLoading() {

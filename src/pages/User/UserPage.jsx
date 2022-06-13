@@ -67,37 +67,47 @@ export default function UserPage({ match }) {
   return (
     <Loading fetch={fetchItems}>
       <Body>
-          <UserSection>
-            <div class="AvatarSection">
-              <Avatar size={140} src={userDataState.profile.thumbnail}></Avatar>
-            </div>
-            <div class="nickname">{userDataState.profile.username}</div>
-            <div class="date">
-              <CalendarOutlined />
-              {dateConverter(userDataState.createdAt)}
-            </div>
-            {accountState.username == match.params.username && (
-              <Button onClick={openModal}>회원정보 수정</Button>
-            )}
-          </UserSection>
-          <SocialSection>
-            <div class="title">CONTACT</div>
-            <div class="item">
-              <MailOutlined style={{ fontSize: "150%" }} />
-              <div class="type">Email</div>
-              <div class="data">{userDataState.contact.email}</div>
-            </div>
-            <div class="item">
-              <FacebookOutlined style={{ fontSize: "150%" }} />
-              <div class="type">Facebook</div>
-              <div class="data">{userDataState.contact.facebook}</div>
-            </div>
-            <div class="item">
-              <TwitterOutlined style={{ fontSize: "150%" }} />
-              <div class="type">Twitter</div>
-              <div class="data">{userDataState.contact.twitter}</div>
-            </div>
-          </SocialSection>
+        <UserSection>
+          <div class="AvatarSection">
+            <Avatar size={140} src={userDataState.profile.thumbnail}></Avatar>
+          </div>
+          <div class="nickname">{userDataState.profile.username}</div>
+          <div class="date">
+            <CalendarOutlined />
+            {dateConverter(userDataState.createdAt)}
+          </div>
+          {accountState.username === match.params.username && (
+            
+            <UserUpdateButtonDiv>
+              <Button
+              type="primary"
+              
+              onClick={openModal}>
+              회원정보 수정
+              
+              </Button>
+            </UserUpdateButtonDiv>
+
+          )}
+        </UserSection>
+        <SocialSection>
+          <div class="title">CONTACT</div>
+          <div class="item">
+            <MailOutlined style={{ fontSize: "150%" }} />
+            <div class="type">Email</div>
+            <div class="data">{userDataState.contact.email}</div>
+          </div>
+          <div class="item">
+            <FacebookOutlined style={{ fontSize: "150%" }} />
+            <div class="type">Facebook</div>
+            <div class="data">{userDataState.contact.facebook}</div>
+          </div>
+          <div class="item">
+            <TwitterOutlined style={{ fontSize: "150%" }} />
+            <div class="type">Twitter</div>
+            <div class="data">{userDataState.contact.twitter}</div>
+          </div>
+        </SocialSection>
         <Tab>
           <TapSection
             id={userDataState._id}
@@ -105,7 +115,7 @@ export default function UserPage({ match }) {
           ></TapSection>
         </Tab>
       </Body>
-      
+
       <UserUpdate
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
@@ -154,16 +164,6 @@ const Tab = styled.div`
     height: 550px;
   }
 `;
-
-const User = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 400px;
-  margin-right: auto;
-
-  
-`
 
 const UserSection = styled.div`
   //margin-top: 20px;
@@ -216,6 +216,16 @@ const UserSection = styled.div`
   
   }
 `;
+
+const UserUpdateButtonDiv = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+`
 
 const SocialSection = styled.div`
   position: absolute;

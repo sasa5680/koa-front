@@ -11,14 +11,22 @@ import {
   HeartFilled,
 } from "@ant-design/icons";
 import ReplyList from "./ReplyList";
-import { useAccountState } from "../../context/AccountContext";
+
+import { 
+  useAccountState, 
+  useAccountDispatch } from "../../context/AccountContext";
+import {
+  useLoginModalDispatch,
+  useLoginModalState,
+} from "../../context/LoginModalContext";
 import { dateConverter } from "../../utils/date";
 import Loading from "../../components/Loading";
 import { MainBody } from "../../common/style";
 
 export default function Promotion({ match }) {
   const accountState = useAccountState();
-
+  const loginModalDsipatch = useLoginModalDispatch();
+  
   const { id } = match.params;
 
   const [post, setposts] = useState({
@@ -34,6 +42,11 @@ export default function Promotion({ match }) {
   });
 
   const like = async (id) => {
+
+    if(!accountState.isLogin){
+      loginModalDsipatch({type: "OPEN"});
+      return;
+    }
 
     try {
       
