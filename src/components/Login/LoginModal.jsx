@@ -126,7 +126,6 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
         <Line />
       </OrArea>
       <GoogleLoginBtn handleLogin={handleLogin}></GoogleLoginBtn>
-      <KakaoLoginBtn></KakaoLoginBtn>
     </StyledModel>
   );
 }

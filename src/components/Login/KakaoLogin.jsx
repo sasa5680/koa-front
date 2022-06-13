@@ -1,9 +1,7 @@
-import { ConsoleSqlOutlined } from "@ant-design/icons";
 import React, { Ref, useRef } from "react";
 import KaKaoLogin from "react-kakao-login";
-import axios from "axios";
+import styled from "styled-components";
 
-const clientId = "d15ff5faebde3b07af05e6103a72c085";
 
 export default function KakaoLoginBtn({onLogin}) {
   //saga 함수 불러옴
@@ -20,14 +18,27 @@ export default function KakaoLoginBtn({onLogin}) {
   const onFailure = (error) => {
     console.log(error);
   };
-  const target = useRef();
+
   return (
-    <KaKaoLogin
-      ref={target}
-      token={clientId}
+    <StyledButton
+      style={{}}
+      //token={clientId}
       onSuccess={onSuccess}
       onFail={console.error}
       onLogout={console.info}
     />
   );
 }
+
+const StyledButton = styled(KaKaoLogin)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 235, 0);
+
+  border: none;
+
+  box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+`;

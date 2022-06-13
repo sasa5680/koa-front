@@ -1,16 +1,15 @@
-import axios from "axios";
-import React, { useCallback } from "react";
+import React from "react";
 import GoogleLogin from "react-google-login";
 import { useAccountDispatch } from "../../context/AccountContext";
 import { googleLogin } from "../../service/ServiceAuth";
+
+import styled from "styled-components";
 
 const clientId = process.env.REACT_APP_GOOGLE_LOGIN_API_KEY;
 
 console.log(clientId);
 export default function GoogleLoginBtn({ handleLogin }) {
   
-  const dispatch = useAccountDispatch();
-
   const onSuccess = async (response) => {
     const { tokenId } = response;
 
@@ -30,7 +29,7 @@ export default function GoogleLoginBtn({ handleLogin }) {
   };
 
   return (
-    <GoogleLogin
+    <StyledButton
       clientId={clientId}
       responseType={"id_token"}
       onSuccess={onSuccess}
@@ -38,3 +37,13 @@ export default function GoogleLoginBtn({ handleLogin }) {
     />
   );
 }
+
+const StyledButton = styled(GoogleLogin)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+
+`;

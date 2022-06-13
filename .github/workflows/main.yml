@@ -5,7 +5,6 @@ on:
     branches:
       - master
   
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +12,8 @@ jobs:
       - name: 'Create env file'
         run: |
           echo "REACT_APP_GOOGLE_LOGIN_API_KEY=$GOOGLE_LOGIN_API_KEY" >> .env.production
+          echo "REACT_APP_GOOGLE_LOGIN_API_KEY=$GOOGLE_LOGIN_API_KEY" >> .env.production
+
         env:
           GOOGLE_LOGIN_API_KEY: ${{ secrets.GOOGLE_LOGIN_API_KEY }}
       - uses: actions/checkout@v2
