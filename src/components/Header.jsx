@@ -40,7 +40,7 @@ export default function Header(){
     userSection = (
       <>
         <MenuItem>
-          <div onClick={openModal}>login</div>
+          <MenuLink onClick={openModal}>LOGIN</MenuLink>
         </MenuItem>
         <MenuItem>
           <MenuLink to={`/signup`}>SIGN UP</MenuLink>
@@ -54,10 +54,12 @@ export default function Header(){
     userSection = (
       <>
         <MenuItem>
-          <MenuLink to={`/user/${accountState.username}`}>{accountState.username}</MenuLink>
+          <MenuLink to={`/user/${accountState.username}`}>
+            {accountState.username}
+          </MenuLink>
         </MenuItem>
         <MenuItem>
-          <div onClick={onLogout}>logout</div>
+          <MenuLink onClick={onLogout}>LOGOUT</MenuLink>
         </MenuItem>
       </>
     );

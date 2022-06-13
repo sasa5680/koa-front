@@ -6,8 +6,6 @@ import { dateConverter } from "../../utils/date";
 
 export default function Reply({ data, index, handleDelete }) {
 
-  
-
   const UpdateAndDelete = (
     <UpdateAndDeleteDiv>
       <StyledButton

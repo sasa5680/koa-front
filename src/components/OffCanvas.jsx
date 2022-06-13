@@ -31,6 +31,7 @@ export default function OffCanvas({ children }) {
         <MenuLink to={`/user/${accountState.username}`}>
           {accountState.username}
         </MenuLink>
+        <MenuLink onClick={()=>{accountDispatch({ type: "LOGOUT" });}}>LOGOUT</MenuLink>
         <MenuLink to={`/about`}>ABOUT</MenuLink>
       </>
     );
@@ -45,8 +46,12 @@ export default function OffCanvas({ children }) {
         >
           LOGIN
         </MenuLink>
-        <MenuLink to={`/signup`} onClick={toggle}>SIGN-UP</MenuLink>
-        <MenuLink to={`/about`}>ABOUT</MenuLink>
+        <MenuLink to={`/signup`} onClick={toggle}>
+          SIGN-UP
+        </MenuLink>
+        <MenuLink to={`/about`} onClick={toggle}>
+          ABOUT
+        </MenuLink>
       </>
     );
   }

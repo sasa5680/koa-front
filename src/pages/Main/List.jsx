@@ -169,8 +169,6 @@ const PostProfile = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-left: auto;
-
-
 `;
 
 const IconDiv = styled.div`
@@ -181,7 +179,6 @@ const IconDiv = styled.div`
   justify-content: center;
 
   margin-right: 10px;
-  background-color: beige;
   @media screen and (max-width: 500px) {
     display: none;
   }

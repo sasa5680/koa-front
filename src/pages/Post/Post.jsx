@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import { readPost, likePost } from "../../service/ServicePost";
 import styled from "styled-components";
 import { Col, Avatar, Button, message  } from "antd";
-
-import { UserOutlined, HeartFilled } from "@ant-design/icons";
+import {
+  UserOutlined,
+  HeartOutlined,
+  EyeOutlined,
+  HeartFilled,
+} from "@ant-design/icons";
 import ReplyList from "./ReplyList";
 import { useAccountState } from "../../context/AccountContext";
 import { dateConverter } from "../../utils/date";
@@ -38,17 +42,13 @@ export default function Promotion({ match }) {
     } catch (error) {
 
       message.error("이미 좋아요를 누른 게시물입니다.");
-      console.log(error);
-      
     }
   }
 
   const fetchItems = async () => {
     //로딩 시작
     try {
-      console.log(id)
       const response = await readPost(id);
-      console.log(response.data)
       setposts(response.data);
     } catch (error) {
       throw error;
@@ -63,17 +63,17 @@ export default function Promotion({ match }) {
   });
 
   //로그인 상태면 수정 삭제버튼 보이게 한다.
-  let udButton;
-  if (accountState.username == post.profile.username) {
-    udButton = (
-      <>
-        <Col>
-          <Button>삭제</Button>
-        </Col>
-      </>
+  let upadateDelte = <></>;
+  if (accountState.username === post.profile.username) {
+    upadateDelte = (
+      <UpadateDelteSection>
+        <Button
+        type="danger"
+        size="large">Delete</Button>
+      </UpadateDelteSection>
     );
   } else {
-    udButton = <></>;
+    upadateDelte = <></>;
   }
 
   let profile = <img src={post.profile.thumbnail} width="50" alt="사과" />
@@ -119,10 +119,28 @@ export default function Promotion({ match }) {
         </LikeSection>
 
         {/* 기타정보 */}
-        <InfoSection>
+        {/* <InfoSection>
           <div class="info view">{`view: ${post.view}`}</div>
           <div class="info like">{`like: ${post.like}`}</div>
-        </InfoSection>
+        </InfoSection> */}
+
+        <PostProfile>
+          <IconDiv>
+            <EyeOutlined
+              style={{ fontSize: "40px", color: "#08c", marginRight: "10px" }}
+            />
+            <div>{post.view}</div>
+          </IconDiv>
+          <IconDiv>
+            <HeartOutlined
+              style={{ fontSize: "40px", color: "red", marginRight: "10px" }}
+            />
+            <div>{post.like}</div>
+          </IconDiv>
+        </PostProfile>
+
+        {/* 삭제 및 업데이트 */}
+        {upadateDelte}
 
         {/* 댓글 */}
         <ReplySection>
@@ -141,15 +159,14 @@ const Title = styled.div`
   margin-top: 30px;
   font-size: 50px;
   font-weight: bolder;
+  display: flex;
 
   @media screen and (max-width: 900px) {
     font-size: 40px;
-    margin-left: 10px;
   }
 
   @media screen and (max-width: 500px) {
-    font-size: 30px;
-    margin-left: 10px;
+    font-size: 35px;
   }
 `;
 
@@ -165,15 +182,6 @@ const PostInfo = styled.div`
   align-items: center;
   margin-top: 30px;
 `
-
-const Section = styled.div`
-  margin-top: 50px;
-  margin-bottom: 50px;
-  overflow: hidden;
-  width: 100%;
-  //border: 3px yellowgreen solid;
-`;
-
 const ContentSection = styled.div`
   margin-top: 30px;
   font-size: 30px;
@@ -202,6 +210,24 @@ const StyledImg = styled.img`
   max-width: 100%;
   margin-top: 30px;
 `
+
+
+const PostProfile = styled.div`
+  //width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+const IconDiv = styled.div`
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+
+`;
 
 const InfoSection = styled.div`
   width: 100%;
@@ -250,8 +276,26 @@ const LikeSection = styled.div`
   :hover {
     font-size: 350%;
   }
+
+  @media screen and (max-width: 500px) {
+    width: 60px;
+    height: 60px;
+    font-size: 250%;
+
+    :hover {
+      font-size: 300%;
+    }
+  }
 `;
 
+const UpadateDelteSection = styled.div`
+  
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+`
 
 const ReplySection = styled.div`
   margin-top: 50px;

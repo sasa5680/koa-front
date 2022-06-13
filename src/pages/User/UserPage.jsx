@@ -130,6 +130,8 @@ const Body = styled.div`
 
   @media screen and (max-width: 1150px) {
     width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   @media screen and (max-width: 800px) {
