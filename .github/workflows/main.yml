@@ -22,4 +22,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "koaboard" #Must be unique in Heroku
           heroku_email: "sasa5680@naver.com"
+          env_file: ".env"
 
