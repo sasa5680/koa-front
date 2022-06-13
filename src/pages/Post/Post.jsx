@@ -126,15 +126,18 @@ export default function Promotion({ match }) {
 
         <PostProfile>
           <IconDiv>
-            <EyeOutlined
-              style={{ fontSize: "40px", color: "#08c", marginRight: "10px" }}
-            />
+            <StyledIcon>
+              <EyeOutlined
+                style={{ color: "#08c"}}
+              />
+            </StyledIcon>
+
             <div>{post.view}</div>
           </IconDiv>
           <IconDiv>
-            <HeartOutlined
-              style={{ fontSize: "40px", color: "red", marginRight: "10px" }}
-            />
+            <StyledIcon>
+              <HeartOutlined style={{ color: "red" }} />
+            </StyledIcon>
             <div>{post.like}</div>
           </IconDiv>
         </PostProfile>
@@ -220,6 +223,16 @@ const PostProfile = styled.div`
   margin-top: 20px;
 `;
 
+const StyledIcon = styled.div`
+  
+  font-size: 35px;
+  margin-right: 10px;
+
+  @media screen and (max-width: 500px) {
+    font-size: 25px;
+  }
+`;
+
 const IconDiv = styled.div`
   font-size: 30px;
   display: flex;
@@ -227,6 +240,9 @@ const IconDiv = styled.div`
   justify-content: center;
   margin-left: 10px;
 
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 
 const InfoSection = styled.div`

@@ -3,6 +3,7 @@ import styled, { ThemeProvider, css } from "styled-components";
 import { MainBody } from "../common/style";
 import antdlogo from "../assets/logo_antd.svg"
 import herokulogo from "../assets/logo_heroku.svg"
+import githubActionlogo from "../assets/logo_githubaction.png"
 
 console.log(antdlogo)
 
@@ -19,9 +20,7 @@ export default function About() {
               <div>
                 this web site is a simple Board made with KOA web framework.
               </div>
-              <div>
-                I made this web site to study KOA, React, and Devops.
-              </div>
+              <div>I made this web site to study KOA, React, and Devops.</div>
               <br />
 
               <div>
@@ -87,13 +86,17 @@ export default function About() {
                     <TechLogo src={require("../assets/logo_s3.png")} />
                     <TechText>Amazon S3</TechText>
                   </TechItem>
+                  <TechItem>
+                    <TechLogo src={githubActionlogo} />
+                    <TechText>Github Action</TechText>
+                  </TechItem>
                 </TechList>
               </DevSection>
               <DevSection>
                 <TechTitle>Git Repository</TechTitle>
                 <div>
                   <a
-                    href="https://github.com/sasa5680/starbucks"
+                    href="https://github.com/sasa5680/koa-front"
                     target="_blank"
                   >
                     Front-End Repository
@@ -101,7 +104,7 @@ export default function About() {
                 </div>
                 <div>
                   <a
-                    href="https://github.com/sasa5680/starbucks"
+                    href="https://github.com/sasa5680/koa-backend"
                     target="_blank"
                   >
                     Back-End Repository

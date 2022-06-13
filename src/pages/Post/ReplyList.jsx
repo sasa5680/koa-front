@@ -41,9 +41,7 @@ export default function ReplyList( {reply, postId} ) {
 
     try {
       const response = await deleteReply(postId, id);
-
     } catch (error) {
-
     }
   };
 
