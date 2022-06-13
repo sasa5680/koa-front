@@ -11,7 +11,10 @@ jobs:
     steps:
       - name: 'Create env file'
         run: |
-          echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} >> .env.production
+          touch .env
+          echo REACT_APP_API_SERVR="http://ec2-3-36-120-24.ap-northeast-2.compute.amazonaws.com:4000" >> .env
+          echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} >> .env
+          cat .env
         env:
           GOOGLE_LOGIN_API_KEY: ${{ secrets.GOOGLE_LOGIN_API_KEY }}
       - uses: actions/checkout@v2
