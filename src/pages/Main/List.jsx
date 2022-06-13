@@ -41,7 +41,7 @@ export default function List({post}) {
               <HeartOutlined style={{ fontSize: "32px", color: "red" }} />
               <div>{data.like}</div>
             </IconDiv>
-            <div>{dateConverter(data.createdAt)}</div>
+            <TimeDiv>{dateConverter(data.createdAt)}</TimeDiv>
           </PostProfile>
         </StyledFooter>
       </StyledLayout>
@@ -105,7 +105,7 @@ const StyledHeader = styled(Header)`
 
 const StyledContent = styled(Content)`
   font-size: 20px;
-  height: 55px;
+  height: 65px;
 
   //margin-left: ${maginLeft};
   width: 100%;
@@ -183,4 +183,10 @@ const IconDiv = styled.div`
     display: none;
   }
 `;
+
+const TimeDiv = styled.div`
+  
+  font-size: 18px;
+  font-weight: 400;
+`
     
