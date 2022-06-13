@@ -11,10 +11,8 @@ jobs:
     steps:
       - name: 'Create env file'
         run: |
-          touch .env
-          echo REACT_APP_API_SERVR="http://ec2-3-36-120-24.ap-northeast-2.compute.amazonaws.com:4000" >> .env
-          echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} >> .env
-          cat .env
+          echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} >> .env.production
+          cat .env.production
 
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
