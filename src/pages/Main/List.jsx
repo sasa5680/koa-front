@@ -29,18 +29,18 @@ export default function List({post}) {
         </StyledContent>
         <StyledFooter>
           <UserProfile>
-            <Avatar size={40} src={data.profile.thumbnail}/>
+            <Avatar size={40} src={data.profile.thumbnail} />
             <div>{data.profile.username}</div>
           </UserProfile>
           <PostProfile>
-            <div>
+            <IconDiv>
               <EyeOutlined style={{ fontSize: "32px", color: "#08c" }} />
               <div>{data.view}</div>
-            </div>
-            <div>
+            </IconDiv>
+            <IconDiv>
               <HeartOutlined style={{ fontSize: "32px", color: "red" }} />
               <div>{data.like}</div>
-            </div>
+            </IconDiv>
             <div>{dateConverter(data.createdAt)}</div>
           </PostProfile>
         </StyledFooter>
@@ -70,6 +70,7 @@ const StyledLayout = styled(Layout)`
 
   background-color: #f6f6f6;
   box-shadow: 8px 8px 15px gray;
+
 `;
 const StyledHeader = styled(Header)`
   width: 100%;
@@ -146,8 +147,7 @@ const UserProfile = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
-  width: 30%;
+  //width: 30%;
 
   div {
     padding-left: 10px;
@@ -170,22 +170,20 @@ const PostProfile = styled.div`
   justify-content: flex-start;
   margin-left: auto;
 
-  div {
-    font-size: 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+`;
 
-    margin-right: 10px;
+const IconDiv = styled.div`
+  font-size: 20px;
 
-    @media screen and (max-width: 700px) {
-      margin-right: 4px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    div {
-      margin-left: 8px;
-    }
+  margin-right: 10px;
+  background-color: beige;
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
     

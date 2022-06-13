@@ -18,7 +18,6 @@ import styled from "styled-components";
 
 const { Search } = Input;
 
-
 export default function Nav() {
 
   const accountState = useAccountState();
@@ -34,7 +33,6 @@ export default function Nav() {
     } else {
       loginModalDispatch({type: "OPEN"});
     }
-
   }
 
   const onSearch = (value) => {
@@ -53,10 +51,7 @@ export default function Nav() {
       };
 
       postListdispatch({ type: "NEW", action: fetch });
-
   }
-
-
     return (
       <Body>
         <NewPost
@@ -103,8 +98,7 @@ const Body = styled.div`
 
   @media screen and (max-width: 600px) {
     height: 55px;
-    margin-left: 5px;
-    margin-right: 5px;
+
   }
 `;
 

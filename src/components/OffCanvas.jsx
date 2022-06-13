@@ -24,6 +24,7 @@ export default function OffCanvas({ children }) {
   };
 
   let content = <></>
+  //로그인 되어 있으면 보여줄 요소
   if(accountState.isLogin) {
     content = (
       <>
@@ -34,11 +35,17 @@ export default function OffCanvas({ children }) {
       </>
     );
   } else {
-    
+    //로그인 안 되어 있으면 보여줄 요소
     content = (
       <>
-        <Button onClick={()=>{loginModalDispatch({ type: "OPEN" });}}>Login</Button>
-        <MenuLink to={`/about`}>SIGN-UP</MenuLink>
+        <MenuLink
+          onClick={() => {
+            loginModalDispatch({ type: "OPEN" });
+          }}
+        >
+          LOGIN
+        </MenuLink>
+        <MenuLink to={`/signup`} onClick={toggle}>SIGN-UP</MenuLink>
         <MenuLink to={`/about`}>ABOUT</MenuLink>
       </>
     );
@@ -72,6 +79,8 @@ const IconStyle = css`
 
 const Show = styled(DoubleLeftOutlined)`
   ${IconStyle}
+  color: white;
+  margin-right: 20px;
 `;
 
 const Close = styled(DoubleRightOutlined)`
@@ -93,6 +102,21 @@ const Body = styled.div`
   transition: 0.3s;
   //background: ${(props) => (props.active ? "darkred" : "limegreen")};
 `;
+
+const ButtonDiv = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const StyledButton = styled(Button)`
+
+  width: 80%;
+`
+
 
 const MenuLink = styled(Link)`
   color: #bbbbbb;

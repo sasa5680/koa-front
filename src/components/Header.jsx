@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginModal from "./LoginModal";
+import LoginModal from "./Login/LoginModal";
 import { useAccountState, 
         useAccountDispatch 
 } from "../context/AccountContext";
@@ -150,12 +150,12 @@ const Menu = styled.div `
 `;
 
 const StyledOff = styled.div`
+  
   display: none;
-  background-color: aliceblue;
   @media screen and (max-width: 700px) {
     display: contents;
-    margin-left: auto;
-    margin-right: 10px;
+    //margin-left: auto;
+    margin-right: 20px;
   }
 `;
 

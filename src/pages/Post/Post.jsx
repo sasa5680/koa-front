@@ -17,8 +17,6 @@ export default function Promotion({ match }) {
 
   const { id } = match.params;
 
-  
-
   const [post, setposts] = useState({
     profile: { username: "", thumbnail: "" },
     //Posts: [], //홍보글 목록
@@ -89,11 +87,15 @@ export default function Promotion({ match }) {
         {/* 게시물 정보 */}
         <PostInfo>
           <Avatar
+            style={{ marginLeft: "5px" }}
             size={50}
             src={profile}
             //icon={<UserOutlined />}
           />
-          <Link to={`/user/${post.profile.username}`}>
+          <Link
+            style={{ marginLeft: "10px" }}
+            to={`/user/${post.profile.username}`}
+          >
             <h2>{post.profile.username}</h2>
           </Link>
           <Date>{dateConverter(post.createdAt)}</Date>
@@ -140,12 +142,14 @@ const Title = styled.div`
   font-size: 50px;
   font-weight: bolder;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 900px) {
     font-size: 40px;
+    margin-left: 10px;
   }
 
   @media screen and (max-width: 500px) {
     font-size: 30px;
+    margin-left: 10px;
   }
 `;
 
@@ -175,8 +179,10 @@ const ContentSection = styled.div`
   font-size: 30px;
   word-break: break-all;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 900px) {
     font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   @media screen and (max-width: 500px) {

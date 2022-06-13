@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Modal, Button } from "antd";
-import { Form, Input, Checkbox } from "antd";
+import { Modal, Button, message } from "antd";
+import { Form, Input, Checkbox, Message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { GoogleLogin } from "react-google-login"
 import styled from "styled-components";
 
-import { login } from "../service/ServiceAuth";
-import { useAccountDispatch } from "../context/AccountContext";
+import { login } from "../../service/ServiceAuth";
+import { useAccountDispatch } from "../../context/AccountContext";
 import GoogleLoginBtn from "./GooleLogin";
 import KakaoLoginBtn from "./KakaoLogin";
 
@@ -20,40 +19,36 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
     
     //로그인 성공하면
     if (result) {
-      const modal = Modal.success({
-        title: "Welcome!",
-        content: `환영합니다 ${res.data.username} !`,
-      });
 
-      //5초 후에 성공 모달과 로그인 모달 모두 닫는다.
-      setTimeout(() => {
-        modal.destroy();
-        closeModal();
-      }, 5 * 1000);
+      message.success(`환영합니다 ${res.data.username}님!`, 5);
+      closeModal();
 
       //실패하면 경고 메세지 띄운다.
     } else {
-      const modal = Modal.warning({
-        title: "로그인 실패",
-        content: "유저정보를 다시 확인하세요!",
-      });
+      message.warning(`로그인 정보를 다시 확인하세요!`);
     }
   }
   
-  const handleSubmit = async (value) => {
-    
-    console.log(value)
+  const handleLogin = async (getRes) => {
     try {
-      const res = await login(value);
-      console.log(res);
+      const res = await getRes();
       resultModal(res, true);
-      onLogin(res.data)       
-
+      onLogin(res.data);
+    
     } catch (error) {
       console.log(error);
       resultModal(null, false);
-
     }
+  }
+
+  const handleSubmit = async (value) => {
+    
+    const getRes = async () => {
+      const res = await login(value);
+      return res;
+    }
+
+    handleLogin(getRes);
   };
 
   const Loading = <></>;
@@ -130,7 +125,7 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
         <OrText>or</OrText>
         <Line />
       </OrArea>
-      <GoogleLoginBtn></GoogleLoginBtn>
+      <GoogleLoginBtn handleLogin={handleLogin}></GoogleLoginBtn>
       <KakaoLoginBtn></KakaoLoginBtn>
     </StyledModel>
   );

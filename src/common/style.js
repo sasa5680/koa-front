@@ -17,17 +17,16 @@ export const ThemaLight = css`
 
 //공통 스타일 이곳에서 관리
 export const MainBody = css`
-
   margin-left: auto;
   margin-right: auto;
   width: 900px;
 
   @media screen and (max-width: 900px) {
-    
+    padding-left: 7px;
+    padding-right: 7px;
     width: 100%;
-    
   }
-`
+`;
 
 export const TagStyle = css`
   

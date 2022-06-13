@@ -5,7 +5,7 @@ import axios from "axios";
 
 const clientId = "d15ff5faebde3b07af05e6103a72c085";
 
-export default function KakaoLoginBtn() {
+export default function KakaoLoginBtn({onLogin}) {
   //saga 함수 불러옴
 
 
