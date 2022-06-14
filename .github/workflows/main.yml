@@ -11,13 +11,14 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
+      - name: 'check file'
+        run: |
+          ls -al 
       - name: 'Create env file'
         run: |
           echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} > .env.production
       - name: 'print env'
         run: |
           cat .env.production
-
-
 
 
