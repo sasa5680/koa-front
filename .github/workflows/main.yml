@@ -9,17 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 'print env'
-        run: |
-          cat .env.production
-      - name: 'see files'
-        run: 
-          ls -al
+
+      - uses: actions/checkout@v2
       - name: 'Create env file'
         run: |
           echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} > .env.production
       - name: 'print env'
         run: |
           cat .env.production
+
+
 
 
