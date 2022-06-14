@@ -13,7 +13,9 @@ jobs:
         run: |
           echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} > .env.production
           cat .env.production
-
+      - name: 'print env'
+        run: |
+          echo .env.production
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
