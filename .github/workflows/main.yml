@@ -9,17 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: 'see files'
+        run: 
+          ls -al
       - name: 'Create env file'
         run: |
           echo REACT_APP_GOOGLE_LOGIN_API_KEY=${{secrets.GOOGLE_LOGIN_API_KEY}} > .env.production
-          cat .env.production
       - name: 'print env'
         run: |
-          echo .env.production
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "koaboard" #Must be unique in Heroku
-          heroku_email: "sasa5680@naver.com"
+          cat .env.production
+
 
