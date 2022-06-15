@@ -38,7 +38,6 @@ export default function Nav() {
   const onSearch = (value) => {
       const fetch = async (page) => {
         try {
-          console.log('read by query');
           postListdispatch({ type: "LOADING" });
 
           const response = await readByPageAndQuery(page, value);

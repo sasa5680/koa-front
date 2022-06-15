@@ -58,24 +58,24 @@ export default function UserPage({ match }) {
 
   const accountState = useAccountState();
 
-  let Update = <></>;
-
-  if (accountState.username === match.params.username) {
-    Update = <Button></Button>;
-  }
-
   return (
     <Loading fetch={fetchItems}>
       <Body>
         <UserSection>
+          
+          {/* 썸네일 */}
           <div class="AvatarSection">
             <Avatar size={140} src={userDataState.profile.thumbnail}></Avatar>
           </div>
           <div class="nickname">{userDataState.profile.username}</div>
+          
+          {/* 가입일 */}
           <div class="date">
             <CalendarOutlined />
             {dateConverter(userDataState.createdAt)}
           </div>
+          
+          {/* 유저 정보 일치하면 유저 수정 버튼 띄운다. */}
           {accountState.username === match.params.username && (
             
             <UserUpdateButtonDiv>
@@ -90,6 +90,8 @@ export default function UserPage({ match }) {
 
           )}
         </UserSection>
+
+        {/* 유저 소셜 영역 */}
         <SocialSection>
           <div class="title">CONTACT</div>
           <div class="item">
@@ -108,6 +110,8 @@ export default function UserPage({ match }) {
             <div class="data">{userDataState.contact.twitter}</div>
           </div>
         </SocialSection>
+        
+        {/* 유저 탭 */}
         <Tab>
           <TapSection
             id={userDataState._id}

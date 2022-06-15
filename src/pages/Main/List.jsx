@@ -4,23 +4,16 @@ import { Avatar, Layout } from "antd";
 import { UserOutlined, HeartOutlined, EyeOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import { dateConverter } from "../../utils/date";
+import { Link } from "react-router-dom";
 const { Header, Footer, Sider, Content } = Layout;
 
 
-export default function List({post}) {
+export default function List({post, history}) {
 
-  const moveLink = (id) => {
-    window.location.href = `/post/${id}`;
-  }
 
-  console.log(post)
   const postList = post.map((data, index) => (
-    <>
-      <StyledLayout
-        onClick={() => {
-          moveLink(data.postNum);
-        }}
-      >
+    <StyledLink to={`/post/${data.postNum}`}>
+      <StyledLayout>
         <StyledHeader>
           <div class="inner">{data.title}</div>
         </StyledHeader>
@@ -45,7 +38,7 @@ export default function List({post}) {
           </PostProfile>
         </StyledFooter>
       </StyledLayout>
-    </>
+    </StyledLink>
   ));
 
     return (
@@ -96,6 +89,11 @@ const StyledHeader = styled(Header)`
     word-break: break-all;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 
   @media screen and (max-width: 700px) {
@@ -163,6 +161,15 @@ const UserProfile = styled.div`
     margin-left: 5px;
   }
 `; 
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+
+  :hover {
+    color: black;
+  }
+`;
 
 const PostProfile = styled.div`
   display: flex;

@@ -80,11 +80,12 @@ const PostList = styled.div`
   padding: 5px;
   width: 100%;
   height: 10%;
-  font-size: 15px;
 `;
 
 const MenuLink = styled(Link)`
   color: black;
   font-weight: 500;
   text-decoration: none;
+  margin-left: 10px;
+  font-size: 18px;
 `;

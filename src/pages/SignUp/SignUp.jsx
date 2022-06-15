@@ -16,11 +16,9 @@ export default function SignIn() {
   /* 전송 누르고, 성공 시 call 되는 함수 */
   const onFinish = async (values) => {
     
-    console.log(values);
     //파일 있으면 추가
     if(fileList.length > 0) {
       let profile = fileList[0];
-      console.log(profile)
       profile = profile.originFileObj;
       values = { ...values, thumbnail: profile };
     } else {
@@ -85,13 +83,10 @@ export default function SignIn() {
   };
 
   const getFile = (e) => {
-    console.log("Upload event:", e);
 
     if (Array.isArray(e)) {
-      console.log("isArray");
       return e;
     }
-    console.log("not Array");
     return e && e.fileList;
   };
 

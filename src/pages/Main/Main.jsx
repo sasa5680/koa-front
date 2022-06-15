@@ -42,7 +42,6 @@ export default function Main() {
         observer.unobserve(entry.target);
         //새로 데이터를 요청한다.
         const fetch = postListState.fetch;
-        console.log(postListState);
         fetch(postListState.page+1);
         console.log("fetch new");
       }

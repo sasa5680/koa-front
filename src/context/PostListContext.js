@@ -50,7 +50,6 @@ function PostListReducer(state, action) {
       }
 
     case "NEW": // 새로운 검색 조건을 갖는 fetch
-    console.log(action.action)
     return {
       Posts: [], //게시글 목록
       isLoading: false, //로딩중 여부

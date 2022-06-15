@@ -12,7 +12,6 @@ import { updateUser }  from "../../service/ServiceUser"
 import styled from "styled-components";
 const { TextArea } = Input;
 
-
 export default function UserUpdate({
   modalIsOpen,
   closeModal,

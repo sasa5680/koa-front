@@ -5,8 +5,6 @@ import antdlogo from "../assets/logo_antd.svg"
 import herokulogo from "../assets/logo_heroku.svg"
 import githubActionlogo from "../assets/logo_githubaction.png"
 
-console.log(antdlogo)
-
 export default function About() {
 
     return (

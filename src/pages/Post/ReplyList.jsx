@@ -28,7 +28,6 @@ export default function ReplyList( {reply, postId} ) {
   })
 
   const handleChange = e => {
-    console.log(e.target.value)
     setValue({
       value: e.target.value,
     });
@@ -36,12 +35,12 @@ export default function ReplyList( {reply, postId} ) {
 
   //댓글 하나 삭제
   const handleDelete = async (id) => {
-    //삭제 함수 call
-      console.log(id);
-
+    //삭제 함수 call      
     try {
       const response = await deleteReply(postId, id);
+      window.location.reload();
     } catch (error) {
+      message.error("에러가 발생했습니다.");
     }
   };
 

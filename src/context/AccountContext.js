@@ -17,12 +17,14 @@ function AccountReducer(state, action) {
   switch (action.type) {
 
     case "SET" : 
+
     return {
       ...action.data
     }
 
     case "LOGIN":
-      return {
+
+      const newState = {
         ...state,
         isLogin: true,
         token: action.data.token,
@@ -30,8 +32,15 @@ function AccountReducer(state, action) {
         thumbnail: action.data.thumbnail,
       };
       
+      //로컬 스토리지에 등록
+      window.localStorage.setItem("user", JSON.stringify(newState));
+
+      return newState;
+      
     case "LOGOUT":
-      //로컬 스토리지 내용을 삭제
+      
+    //로컬 스토리지 내용을 삭제
+      window.localStorage.removeItem("user");
 
       return {
         ...initialState,
@@ -45,16 +54,11 @@ function AccountReducer(state, action) {
 export function AccountProvider({ children }) {
   
   const [state, dispatch] = useReducer(AccountReducer, initialState);
-  
+
   //최초 로딩 시 로컬 스토리지의 데이터를 context에 복사
   useEffect(() => {
     dispatch({type: "SET", data: JSON.parse(window.localStorage.getItem("user"))});
   }, []);
-
-  //state가 변하면 로컬 스토리지의 내용을 갱신
-  useEffect(() => {
-    window.localStorage.setItem("user", JSON.stringify(state));
-  }, [state]);  
 
   //axios에 store 주입
   injectStore(state);

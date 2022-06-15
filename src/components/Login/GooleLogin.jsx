@@ -7,7 +7,6 @@ import styled from "styled-components";
 
 const clientId = process.env.REACT_APP_GOOGLE_LOGIN_API_KEY;
 
-console.log(clientId);
 export default function GoogleLoginBtn({ handleLogin }) {
   
   const onSuccess = async (response) => {

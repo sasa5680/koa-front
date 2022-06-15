@@ -35,7 +35,6 @@ export default function CheckedInput({onCheck, name, rule, form}) {
     //함수 호출
     try {
       const res = await onCheck(value);
-      console.log(res.data);
       if(res.data.exists === false) {
         setState({ ...state, isChecked: true });
 

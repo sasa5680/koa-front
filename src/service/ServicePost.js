@@ -48,7 +48,6 @@ export async function readByPageAndQuery(page, query) {
   return res;
 }
 
-
 //게시물 생성
 export async function createPost(formData) {
   const CREAT_URL = POST_API_URL + "/create";
@@ -59,13 +58,28 @@ export async function createPost(formData) {
     },
   });
 
-  console.log(result)
+  return result
+}
+
+export async function updatePost(postId, formData) {
+  const URL = POST_API_URL + `/${postId}`;
+  const result = await axiosWithToken.post(URL, formData);
+
+  return result;
+}
+
+export async function deleteImage(postId, filename){
+
+  const URL = POST_API_URL + `/${postId}/image/${filename}`;
+  console.log(URL)
+  const result = await axiosWithToken.delete(URL);
+
+  return result;
 }
 
 export async function deletePost(postId) {
 
   const URL = POST_API_URL + `/${postId}`;
-
   const result = await axiosWithToken.delete(URL);
 
   return result;

@@ -4,7 +4,7 @@ import { useState } from "react";
 import styled, {css} from "styled-components";
 
 export default function PageNation({
-  onChange = (num) => {console.log(num)}, //페이지 변경 시 call
+  onChange = (num) => {}, //페이지 변경 시 call
   defaultPageSize,
   defaultCurrent = 1,
   total, //총 페이지 수

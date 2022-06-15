@@ -14,11 +14,10 @@ import TextArea from "antd/lib/input/TextArea";
 import { UploadOutlined } from "@ant-design/icons";
 import { createPost } from "../../service/ServicePost";
 import styled from "styled-components";
-import { Redirect, Route } from "react-router-dom";
+import FileUpload from "../../components/FileUpload";
 
-export default function CreateForm() {
-  //store에서 현재 login 여부, 토큰을 가져온다.
 
+export default function CreateForm({history}) {
 
   /* 전송 누르고, 성공 시 call 되는 함수 */
   const onFinish = async (values) => {
@@ -44,13 +43,13 @@ export default function CreateForm() {
         title: "Result",
         content: `등록이 완료되었습니다!`,
         onOk() {
-          window.location.href = "/";
+          history.push("/");        
         },
       });
 
       setTimeout(() => {
         modal.destroy();
-        window.location.href = "/";
+        history.push("/");   
       }, 5 * 1000);
 
     } catch (error) {
@@ -70,25 +69,9 @@ export default function CreateForm() {
 
   //이미지 파일 리스트
   const [fileList, setFileList] = useState([]);
-
-  const onChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
-  };
-
-  //파일 업로드 전에 call, false를 리턴하면 자동 업로드를 막는다.
-  function beforeUpload(file) {
-    console.log(file.type);
-    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
-    if (!isJpgOrPng) {
-      message.error("You can only upload JPG/PNG file!");
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-      message.error("Image must smaller than 2MB!");
-    }
-    return false;
-  }
-
+  const pull = (state) => {
+    setFileList(state);
+  }; 
 
   return (
     <MainSection>
@@ -161,20 +144,7 @@ export default function CreateForm() {
         <Row>
           <Col offset={1}>
             <Form.Item>
-              <Upload
-                //action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                listType="picture"
-                fileList={fileList}
-                onChange={onChange}
-                accept="image/*"
-                beforeUpload={() => {
-                  beforeUpload();
-                }}
-                //defaultFileList={[...fileList]}
-                className="upload-list-inline"
-              >
-                <Button icon={<UploadOutlined />}>Upload</Button>
-              </Upload>
+              <FileUpload pull={pull} />
             </Form.Item>
           </Col>
         </Row>
@@ -195,9 +165,7 @@ export default function CreateForm() {
 }
 const MainSection = styled.div`
   ${MainBody}
-  //background-color: blue;
 `;
-
 
 const Header = styled.div`
   width: 100%;
@@ -215,18 +183,6 @@ const Label = styled.div`
 
 
 const StyledTextArea = styled(TextArea)`
-  /* &:focus {
-    border: 3px solid red;
-  }
-
-  &:hover {
-    border: 3px solid red;
-  } */
-
-  /* .ant-input:hover {
-    border: 1px solid red;
-    border-radius: 10px;
-  } */
 
   &::placeholder {
     color: gray;

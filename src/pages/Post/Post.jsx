@@ -1,29 +1,25 @@
 import React, { useState } from "react";
-
 import { Link } from "react-router-dom";
-import { readPost, likePost } from "../../service/ServicePost";
+import { readPost, deletePost, likePost } from "../../service/ServicePost";
 import styled from "styled-components";
-import { Col, Avatar, Button, message  } from "antd";
+import { Avatar, Button, message, Modal } from "antd";
 import {
-  UserOutlined,
   HeartOutlined,
   EyeOutlined,
   HeartFilled,
+  ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import ReplyList from "./ReplyList";
-
-import { 
-  useAccountState, 
-  useAccountDispatch } from "../../context/AccountContext";
-import {
-  useLoginModalDispatch,
-  useLoginModalState,
-} from "../../context/LoginModalContext";
+import { useAccountState } from "../../context/AccountContext";
+import { useLoginModalDispatch } from "../../context/LoginModalContext";
 import { dateConverter } from "../../utils/date";
 import Loading from "../../components/Loading";
 import { MainBody } from "../../common/style";
+import PostUpdate from "./PostUpdate";
+const { confirm } = Modal;
 
-export default function Promotion({ match }) {
+export default function Post({ match, }) {
+
   const accountState = useAccountState();
   const loginModalDsipatch = useLoginModalDispatch();
   
@@ -39,8 +35,41 @@ export default function Promotion({ match }) {
     createdAt: "",
     like: 0,
     view: 0,
+    postNum: 0,
   });
+  //수정 모달 창 열림 여부
+  const [modalIsOpen, setIsOpen] = useState(false);
+  
+  //삭제 확인 모달 창 열림 여부
+  const showDeleteConfirm = async () => {
+    confirm({
+      title: "Warning",
+      icon: <ExclamationCircleOutlined />,
+      content: "Really?",
+      okText: "Delete",
+      okType: "danger",
+      cancelText: "No",
+      async onOk() {
+        await onDelete(id);
+      },
+      onCancel() {
+      },
+    });
+  };
 
+  const onDelete = async (id) => {
+
+    try {
+      const res = await deletePost(id);
+      console.log(res)
+      window.location = "/";
+
+    } catch (error) {
+      message.error("에러가 발생했습니다.")
+    }
+  }
+
+  /* 좋아요 버튼 callback */
   const like = async (id) => {
 
     if(!accountState.isLogin){
@@ -49,7 +78,6 @@ export default function Promotion({ match }) {
     }
 
     try {
-      
       const response = await likePost(id);
       console.log(response);
     } catch (error) {
@@ -58,6 +86,7 @@ export default function Promotion({ match }) {
     }
   }
 
+  /* 게시물 fetch */
   const fetchItems = async () => {
     //로딩 시작
     try {
@@ -69,9 +98,7 @@ export default function Promotion({ match }) {
   };
 
   //이미지 리스트 렌더링
-
   const imageList = post.image.map((file, index) => {
-    console.log(file.src);
     return (<StyledImg src={file.src} alt="imageiii" />)
   });
 
@@ -80,20 +107,25 @@ export default function Promotion({ match }) {
   if (accountState.username === post.profile.username) {
     upadateDelte = (
       <UpadateDelteSection>
-        <Button
-        type="danger"
-        size="large">Delete</Button>
+        <Button type="primary" size="large" onClick={() => setIsOpen(true)}>
+          수정
+        </Button>
+        <div style={{ width: "10px" }}></div>
+        <Button type="danger" size="large" onClick={showDeleteConfirm}>
+          삭제
+        </Button>
       </UpadateDelteSection>
     );
   } else {
     upadateDelte = <></>;
   }
 
-  let profile = <img src={post.profile.thumbnail} width="50" alt="사과" />
+  let profile = <img src={post.profile.thumbnail} width="50" alt="이미지" />
 
   return (
     <Loading fetch={fetchItems}>
       <MainSection>
+        
         {/* 게시물 타이틀 */}
         <Title>{post.title}</Title>
 
@@ -131,12 +163,6 @@ export default function Promotion({ match }) {
           <HeartFilled />
         </LikeSection>
 
-        {/* 기타정보 */}
-        {/* <InfoSection>
-          <div class="info view">{`view: ${post.view}`}</div>
-          <div class="info like">{`like: ${post.like}`}</div>
-        </InfoSection> */}
-
         <PostProfile>
           <IconDiv>
             <StyledIcon>
@@ -163,6 +189,12 @@ export default function Promotion({ match }) {
           <ReplyList reply={post.reply} postId={id}></ReplyList>
         </ReplySection>
       </MainSection>
+
+      <PostUpdate
+        post={post}
+        modalIsOpen={modalIsOpen}
+        closeModal={()=>{setIsOpen(false)}}
+      />
     </Loading>
   );
 }
@@ -226,7 +258,6 @@ const StyledImg = styled.img`
   max-width: 100%;
   margin-top: 30px;
 `
-
 
 const PostProfile = styled.div`
   //width: 50%;
