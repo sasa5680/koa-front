@@ -35,7 +35,6 @@ export async function signUp(reqData) {
   return response;
 }
 
-
 //로그인 요청
 export async function login(param) {
 
@@ -46,7 +45,6 @@ export async function login(param) {
     const res = await axios.post(url, param);
     return res;
 }
-
 
 //로그인 요청
 export async function googleLogin(param) {

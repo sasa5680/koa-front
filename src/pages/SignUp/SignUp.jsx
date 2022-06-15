@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Checkbox, Row, Col } from "antd";
-import { Upload, message, Textarea } from "antd";
+import React, { useState } from "react";
+import { Form, Input, Button, Row, Col } from "antd";
+import { Upload, message } from "antd";
 import { signUp } from "../../service/ServiceAuth";
 import styled from "styled-components";
+import { useAccountDispatch } from "../../context/AccountContext";
 import { InputStyle } from "../../common/style";
 import { isEmailDuplicated, isNicknameDuplicated } from "../../service/ServiceUser";
+import { login } from "../../service/ServiceAuth";
 import CheckedInput from "./CheckedInput";
 const { TextArea } = Input;
 
 export default function SignIn() {
   
+  const dispatch = useAccountDispatch();
+  const onLogin = (data) => dispatch({ type: "LOGIN", data });
+
   // antd form control
   const [form] = Form.useForm();
 
@@ -23,19 +28,24 @@ export default function SignIn() {
       values = { ...values, thumbnail: profile };
     } else {
       values = { ...values };
+    }    
 
+    try {
+      //회원가입 진행
+      const response = await signUp(values);
+      message.success(`환영합니다 ${values.username}`)
+      //로그인 처리
+      const res = await login({email: values.email, password: values.password});
+
+      onLogin(res.data);
+      window.location = "/";
+
+    } catch (error) {
+      
     }
-    
-    const response = signUp(values);
 
-    response
-      .then((data) => {
-        console.log(data.data);
-        //정보들 추가
-      })
-      .catch((e) => {
-        
-      });
+
+
   };
 
   /* 전송 누르고, 실패 시 call 되는 함수 */
