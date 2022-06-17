@@ -10,7 +10,7 @@ import { login } from "../../service/ServiceAuth";
 import CheckedInput from "./CheckedInput";
 const { TextArea } = Input;
 
-export default function SignIn() {
+export default function SignIn({history}) {
   
   const dispatch = useAccountDispatch();
   const onLogin = (data) => dispatch({ type: "LOGIN", data });
@@ -38,7 +38,8 @@ export default function SignIn() {
       const res = await login({email: values.email, password: values.password});
 
       onLogin(res.data);
-      window.location = "/";
+      history.push("/");
+      //window.location = "/";
 
     } catch (error) {
       

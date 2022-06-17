@@ -33,7 +33,8 @@ export default function PostUpdate({
       const response = await updatePost(post.postNum, formData);
       
       //새로고침
-      window.location.reload();
+      message.success("수정이 완료되었습니다.")
+      history.go(0);
 
     } catch (error) {
       const modal = Modal.warning({

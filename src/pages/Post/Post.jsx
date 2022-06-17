@@ -18,7 +18,7 @@ import { MainBody } from "../../common/style";
 import PostUpdate from "./PostUpdate";
 const { confirm } = Modal;
 
-export default function Post({ match, }) {
+export default function Post({ match, history}) {
 
   const accountState = useAccountState();
   const loginModalDsipatch = useLoginModalDispatch();
@@ -189,8 +189,10 @@ export default function Post({ match, }) {
           <ReplyList reply={post.reply} postId={id}></ReplyList>
         </ReplySection>
       </MainSection>
-
+      
+      {/* 게시물 업데이트 하는 모달 */}
       <PostUpdate
+        history={history}
         post={post}
         modalIsOpen={modalIsOpen}
         closeModal={()=>{setIsOpen(false)}}
