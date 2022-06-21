@@ -136,8 +136,6 @@ const Inner = styled.div`
   width: 85%;
   margin-top: 50px;
   margin-bottom: 50px;
-  //background-color: blue;
-
 `;
 
 const Title = styled.div`

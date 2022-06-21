@@ -16,13 +16,10 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
   const onLogin  = (data) => dispatch({ type: "LOGIN", data });
 
   function resultModal(res, result) {
-    
     //로그인 성공하면
     if (result) {
-
       message.success(`환영합니다 ${res.data.username}님!`, 5);
       closeModal();
-
       //실패하면 경고 메세지 띄운다.
     } else {
       message.warning(`로그인 정보를 다시 확인하세요!`);
@@ -50,8 +47,6 @@ export default function LoginModal({ modalIsOpen, closeModal, afterOpenModal }) 
 
     handleLogin(getRes);
   };
-
-  const Loading = <></>;
 
   return (
     <StyledModel
