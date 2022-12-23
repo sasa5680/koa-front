@@ -11,6 +11,7 @@ import UserPage from "../pages/User/UserPage";
 import styled from "styled-components";
 import { useAccountState } from "../context/AccountContext";
 import SignInPage from "../pages/SignInPage";
+import TestPage from "../pages/TestPage";
 
 export default function MainView(){
 
@@ -28,11 +29,6 @@ export default function MainView(){
           <Route exact path="/about" component={About}></Route>
           <Route exact path="/user/:username" component={UserPage}></Route>
           <Route exact path="/signin" component={SignInPage}></Route>
-
-          {/*         <Route exact path="/shop" component={Shop}></Route>
-        <Route exact path="/item/:id" component={ItemDetail}></Route>
-        <Route exact path="/login"></Route>
-        <Route exact path="/signup" component={SignUp}></Route> */}
         </Switch>
       </Body>
     );

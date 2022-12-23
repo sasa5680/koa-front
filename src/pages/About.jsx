@@ -28,6 +28,9 @@ export default function About() {
                 also, you can make your own account with your email or social
                 media
               </div>
+              <div>And this web serivce supports Mobile View.
+                 Press F12 And move the Scroll to Check it!
+              </div>
               <br />
               <div>Thanks for visiting!</div>
 

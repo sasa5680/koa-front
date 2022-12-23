@@ -1,13 +1,11 @@
 import axios from "axios";
-import {
-  useAccountState
-} from "../context/AccountContext";
 
 let store; //전역 상태
 
 //전역상태 주입받는 함수
 export const injectStore = (_store) => {
   store = _store;
+  console.log(store)
 };
 
 //axios 객체 생성 (토큰이 필요한 요청의 경우)

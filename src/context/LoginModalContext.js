@@ -19,8 +19,6 @@ function AccountReducer(state, action) {
         isOpen: false,
       };
 
-
-
     default:
       throw new Error(`Unhandled action type: $`);
   }
@@ -37,7 +35,6 @@ export function LoginModalProvider({ children }) {
           </LoginModalDispatchContext.Provider>
         </LoginModalStateContext.Provider>
       );
-
 }
 
 export function useLoginModalState() {

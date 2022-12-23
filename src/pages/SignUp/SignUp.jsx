@@ -44,9 +44,6 @@ export default function SignIn({history}) {
     } catch (error) {
       
     }
-
-
-
   };
 
   /* 전송 누르고, 실패 시 call 되는 함수 */

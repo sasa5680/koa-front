@@ -102,26 +102,11 @@ const Body = styled.div`
   background-color: #333;
   top: 0;
   right: ${(props) => (props.active ? "-300px" : "0px")};
-  z-index: 100;
+  z-index: 1000000;
 
   transition: 0.3s;
   //background: ${(props) => (props.active ? "darkred" : "limegreen")};
 `;
-
-const ButtonDiv = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-const StyledButton = styled(Button)`
-
-  width: 80%;
-`
-
 
 const MenuLink = styled(Link)`
   color: #bbbbbb;
