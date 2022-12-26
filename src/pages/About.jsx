@@ -16,23 +16,26 @@ export default function About() {
 
             <Body>
               <div>
-                this web site is a simple Board made with KOA web framework.
+                이 웹 사이트는 KOA Framework를 이용해 제작한 간단한 게시판
+                입니다.
               </div>
-              <div>I made this web site to study KOA, React, and Devops.</div>
+              <br />
+              <div>
+                이미지를 포함한 게시물을 업로드 게시물 수정, 댓글 남기기,
+                좋아요를 누를 수 있습니다.
+              </div>
+              <br />
+              <div>
+                또한, 이메일 혹은 Google 계정을 이용해 로그인이 가능합니다.
+              </div>
               <br />
 
               <div>
-                you can upload post with images, leave a comment, and etc.
-              </div>
-              <div>
-                also, you can make your own account with your email or social
-                media
-              </div>
-              <div>And this web serivce supports Mobile View.
-                 Press F12 And move the Scroll to Check it!
+                마지막으로, 이 웹은 모바일 버전을 지원합니다. 모바일로 접속 혹은
+                F12를 눌러 개발자 도구를 연 후 스크롤을 움직여 보세요.
               </div>
               <br />
-              <div>Thanks for visiting!</div>
+              <div>방문해주셔서 감사합니다!</div>
 
               <DevSection>
                 <TechTitle>Tech Stack</TechTitle>
