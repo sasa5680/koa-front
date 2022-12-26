@@ -11,7 +11,6 @@ import UserPage from "../pages/User/UserPage";
 import styled from "styled-components";
 import { useAccountState } from "../context/AccountContext";
 import SignInPage from "../pages/SignInPage";
-import TestPage from "../pages/TestPage";
 
 export default function MainView(){
 
